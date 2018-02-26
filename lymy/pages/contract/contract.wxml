@@ -1,0 +1,14 @@
+<view class="container container-gray">
+<form bindsubmit="formSubmit">
+	<block wx:if="{{contractType==1}}">
+		<include src="contractSquare.wxml" />
+	</block>
+	<block wx:elif="{{contractType==2}}">
+		<include src="contractParvial.wxml" />
+	</block>
+	
+	<view class="btn-submit">
+		<button class="btn-block btn-orange" formType="submit">提交</button>
+	</view>
+	</form>
+</view>

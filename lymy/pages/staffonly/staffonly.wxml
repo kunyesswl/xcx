@@ -1,0 +1,22 @@
+<view class="container">
+	<view class="container-body">
+		<view class="service-item shop-detail">
+			<view class="service-img">
+				<image src="{{shopdetail.imgurl}}" mode="aspectFill"></image>
+			</view>
+			<view class="service-text">
+				<!--<view class="service-tite">{{shopdetail.name}}</view>-->
+				<view><text class="service-city">角色名称：{{staffinfo.role}}</text></view>
+				<view><text class="service-city">商铺编号：{{shopdetail.no}}</text></view>
+				<view><text class="service-city">员工编号：{{staffinfo.id}}</text></view>
+				<view><text class="service-city">商铺地址：{{shopdetail.address}}</text></view>
+			</view>
+		</view>
+	<view class="index-menu">
+		<navigator class="index-menu-item" wx:for="{{staffonlymenu}}" wx:key="{{item.url}}" url="../{{item.url}}/{{item.url}}">
+			<image src="{{item.icon}}"></image>
+			<text>{{item.text}}</text>
+		</navigator>
+	</view>
+	</view>
+</view>
