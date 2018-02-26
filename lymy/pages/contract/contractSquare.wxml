@@ -82,7 +82,8 @@
 					<text class="input-item-label_c000">开始时间</text>
 					<view class="input-item-content">
 					<picker mode="date" value="{{startDate}}" bindchange="bindDayChange" data-type="1">
-						<input type="text" name="leaseStart" placeholder="开始时间" value="{{startDate}}"></input>
+						<input type="text" hidden="true" name="leaseStart" placeholder="开始时间" value="{{startDate}}"></input>
+						<text>{{startDate}}</text>
 					</picker>
 					
 					</view>
@@ -91,7 +92,8 @@
 					<text class="input-item-label_c000">到期时间</text>
 					<view class="input-item-content">
 					<picker mode="date" value="{{endDate}}" bindchange="bindDayChange" data-type="2">
-						<input type="text" name="leaseEnd" placeholder="到期时间" value="{{endDate}}"></input>
+						<input type="text" hidden="true" name="leaseEnd" placeholder="到期时间" value="{{endDate}}"></input>
+						<text>{{endDate}}</text>
 					</picker>
 					</view>
 				</view>
