@@ -22,7 +22,11 @@ Page({
           'text':'合同签署',
           'url':'contractlist'
         },
-        
+        {
+          'icon':'./../../images/icon_25.png',
+          'text':'商铺信息',
+          'url':'shoplist'
+        },
         {
           'icon':'./../../images/icon_13.png',
           'text':'请假申请',

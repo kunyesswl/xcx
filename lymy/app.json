@@ -17,7 +17,7 @@
     "pages/activity/activity",
     "pages/activitydetail/activitydetail",
     "pages/my/my",
-	"pages/staffonly/staffonly",
+	"pages/staffonly/staffonly","pages/shoplist/shoplist","pages/shopinfo/shopinfo",
     "pages/myconferencelist/myconferencelist"
   ],
   "window":{
