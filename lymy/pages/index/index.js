@@ -29,7 +29,7 @@ Page({
         {
           'icon':'./../../images/icon_03.png',
           'text':'报事报修',
-          'url':'service'
+          'url':'property'
         },
         {
           'icon':'./../../images/icon_05.png',
