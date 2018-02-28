@@ -8,5 +8,9 @@
 			<image src="../../images/icon_32.png" mode="aspectFit"></image>
 			<text>利远分场合同</text>
 		</navigator>
+		<navigator class="my-item" url="../contract/contract?_type=3">
+			<image src="../../images/icon_32.png" mode="aspectFit"></image>
+			<text>补充协议</text>
+		</navigator>
 	</view>
 </view>

@@ -6,7 +6,9 @@
 	<block wx:elif="{{contractType==2}}">
 		<include src="contractParvial.wxml" />
 	</block>
-	
+	<block wx:elif="{{contractType==3}}">
+		<include src="contractAgreement.wxml" />
+	</block>
 	<view class="btn-submit">
 		<button class="btn-block btn-orange" formType="submit">提交</button>
 	</view>

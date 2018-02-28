@@ -1,7 +1,7 @@
 var util = require('../../utils/util.js');
 Page({
   data: {
-	ctobj:{"1":"利远广场合同","2":"利远分场合同"},
+	ctobj:{"1":"利远广场合同","2":"利远分场合同","3":"补充协议"},
 	contractType:0,
 	startDate:"2018-01-01",
 	endDate:"2018-01-01",
