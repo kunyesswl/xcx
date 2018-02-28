@@ -11,7 +11,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">铺位编号</text>
 					<view class="input-item-content">
-						<input type="text" name="shopCode" placeholder="请输入商铺号"></input>
+						<input type="text" name="shopCode" placeholder="请输入商铺号" bindblur="bindInputChange" id="shopCode" ></input>
 					</view>
 				</view>
 			</view>
@@ -34,19 +34,19 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">商铺号</text>
 					<view class="input-item-content">
-						<input type="text" name="shopNo" placeholder="请输入商铺号"></input>
+						<input type="text" name="shopNo" placeholder="请输入商铺号" value="{{shopNo}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">面积</text>
 					<view class="input-item-content">
-						<input type="digit" name="shopArea" placeholder="请输入建筑面积(平分米)"></input>
+						<input type="digit" id="shoparea" name="shopArea" placeholder="请输入建筑面积(平分米)" bindblur="bindInputChange"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">铺位间数</text>
 					<view class="input-item-content">
-						<input type="number" name="shopQuantity" placeholder="请输入铺位多少间"></input>
+						<picker id="shopQuantity" bindchange="bindSelect" name="shopQuantity" value="{{shopquaindex=='0'?'':shopquaarry[shopquaindex]}}" range="{{shopquaarry}}" mode="selector">{{shopquaarry[shopquaindex]}}</picker>
 					</view>
 				</view>
 			</view>
@@ -57,7 +57,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">经营范围</text>
 					<view class="input-item-content">
-						<input type="text" name="businessScope" placeholder="请输入经营范围"></input>
+						<picker id="businessScope" bindchange="bindSelect" name="businessScope" value="{{scopeindex=='0'?'':scopearry[scopeindex]}}" range="{{scopearry}}" mode="selector">{{scopearry[scopeindex]}}</picker>
 					</view>
 					
 				</view>
@@ -69,7 +69,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">租赁期</text>
 					<view class="input-item-content">
-						<input type="digit" name="leaseAmount" placeholder="请输入租期共多少年"></input>
+						<picker id="leaseAmount" bindchange="bindSelect" name="leaseAmount" value="{{leaseindex=='0'?'':leasearry[leaseindex]}}" range="{{leasearry}}" mode="selector">{{leasearry[leaseindex]}}</picker>
 					</view>
 				</view>
 				<view class="input-item">
@@ -100,7 +100,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">承租面积</text>
 					<view class="input-item-content">
-						<input type="digit" name="leaseArea" placeholder="请输入承租面积多少平方米"></input>
+						<input type="digit" name="leaseArea" placeholder="请输入承租面积多少平方米" value="{{shoparea}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
@@ -152,7 +152,7 @@
 					</view>
 				</view>
 				<view class="input-item">
-					<text class="input-item-label_c000">合计</text>
+					<text class="input-item-label_c000">第一年合计</text>
 					<view class="input-item-content">
 						<input type="digit" name="chargePerMonthY1" placeholder="市场管理费合计每月多少元"></input>
 					</view>
@@ -226,12 +226,30 @@
 		<view class="group-header">补充条款</view>
 		<view class="group-body">
 			<view class="input-list">
-				<view class="input-item">
+				<!--<view class="input-item">
 					<text class="input-item-label_c000">补充条款</text>
 					<view class="input-item-content">
-						<textarea name="addition" placeholder="请输入补充条款"></textarea>
+						<textarea name="addition" placeholder="请输入补充条款"></textarea> 
 					</view>
-				</view>
+				</view>-->
+				<view class="input-item"><input type="text" name="addition1"></input></view>
+				<view class="input-item"><input type="text" name="addition2"></input></view>
+				<view class="input-item"><input type="text" name="addition3"></input></view>
+				<view class="input-item"><input type="text" name="addition4"></input></view>
+				<view class="input-item"><input type="text" name="addition5"></input></view>
+				<view class="input-item"><input type="text" name="addition6"></input></view>
+			</view>
+		</view> 
+		
+		<view class="group-header">补充协议</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item"><input type="text" name="agreement1"></input></view>
+				<view class="input-item"><input type="text" name="agreement2"></input></view>
+				<view class="input-item"><input type="text" name="agreement3"></input></view>
+				<view class="input-item"><input type="text" name="agreement4"></input></view>
+				<view class="input-item"><input type="text" name="agreement5"></input></view>
+				<view class="input-item"><input type="text" name="agreement6"></input></view>
 			</view>
 		</view> 
 	</view>
