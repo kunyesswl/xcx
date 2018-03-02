@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js');
 Page({
   data: {
     activitydata:{},
@@ -14,7 +15,7 @@ Page({
 		if(res.data.code=="0"){
 			var obj = res.data.data;
 			_this.setData({
-				relation:obj.correlation,
+				relation:obj.correlation[0],
 				shopinfo:obj
 			});
 			wx.setNavigationBarTitle({
@@ -48,6 +49,13 @@ Page({
     // setTimeout(()=>{
    
     // },1000)
+  },onUnload: function (){
+	  //console.log(getCurrentPages());
+	  if(getCurrentPages().length>5){
+		  wx.navigateTo({
+			url: '../shoplist/shoplist'
+		});
+	  }
   }
   /*
   setCurrent: function(e){

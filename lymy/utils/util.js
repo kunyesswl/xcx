@@ -179,7 +179,8 @@ function httppost(url,data,callback,failCallback){
 	sloading();
 	wx.request({  
           url: url,  
-          data: data,  
+		  header: {'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
+          data: json2str(data),  
           method: 'POST',  
           success:function(res) {  
               callback(res); 
@@ -276,6 +277,14 @@ function viewdoc(path,type){
 	  }
     });
 }
+
+function json2str(json) {
+	var str = [];
+		for (var p in json) {
+		str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));
+	}
+	return str.join("&");
+}
 module.exports = {
   formatTime: formatTime,
   getRandomArray: getRandomArray,
@@ -290,5 +299,6 @@ module.exports = {
   httpget:httpget,
   httppost:httppost,
   download:download,
-  viewdoc:viewdoc
+  viewdoc:viewdoc,
+  json2str:json2str
 }

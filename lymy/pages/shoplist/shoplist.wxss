@@ -44,3 +44,22 @@
 .service-city{
 	color: #666;
 }
+.shop-list{
+	padding: 0 20rpx;
+	margin: 20rpx 0;
+	background: #fff;
+}
+.shop-list .shop-item{
+	padding: 20rpx;
+	line-height: 2;
+	display: flex;
+	font-size: 30rpx;
+	border-top: 1rpx solid #e8e8e8;
+}
+.input-list .input-item:first-child{
+	border-top: 0;
+}
+.input-item-content{
+	color: #333;
+	flex:1;
+}

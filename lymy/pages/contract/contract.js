@@ -15,7 +15,6 @@ Page({
 	scopeindex:0,
 	leasearry:["请选择租凭期年数","一","二","三","四","五","六","七","八","九","十"],
 	leaseindex:0
-	
   },
   onLoad: function (option) {
 	this.setData({
@@ -96,11 +95,24 @@ Page({
 		  util.msg("请输入铺位编号");
 		  return;
 	  }
-	 // util.httppost("https://www.kunyesswl.com/wxspl/getSquarePDF",data,"请求成功");
-	 var pdfurl = "https://www.kunyesswl.com/wxspl/getSquarePDF";
+	  var contractType = this.data.contractType;
+	  var url ="";
+	  if(contractType=="1"){
+		  url = "https://www.kunyesswl.com/wxspl/getSquarePDF";
+	  }else if(contractType=="2"){
+		  url = "https://www.kunyesswl.com/wxspl/getParvialFieldPDF";
+	  }else if(contractType=="3"){
+		  url = "https://www.kunyesswl.com/wxspl/getSideAgreementPDF";
+	  }
+	  util.httppost(url,data,function(res){
+		  if(res.data.code=="0"){
+			  util.msg("提交成功");
+		  }else{
+			  util.msg("提交失败");
+		  }
+	  });
 	 //util.download(pdfurl);
 	// util.viewdoc(pdfurl,"pdf");
-	 util.msg("提交成功","success");
 	
   }
 })

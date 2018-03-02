@@ -7,7 +7,7 @@
   	  		<view class="space-item">
   	  			<text class="text-left">关联商铺：</text>
 				<navigator wx:for="{{relation}}" wx:key="{{item.id}}" url="../shopinfo/shopinfo?id={{item.id}}">
-					<text class="text-right">{{item.shopCode}}</text>
+				<view><text class="text-label">{{item.shopCode}}</text></view>
 				</navigator>
   	  		</view>
   	  	</view>
@@ -45,7 +45,7 @@
   	  		</view>
 			<view class="space-item">
   	  			<text class="text-left">当月水电费：</text>
-  	  			<text class="text-right">{{shopinfo.wecost}}</text>
+  	  			<text class="text-right">{{shopinfo.hydropower}}</text>
   	  		</view>
 			<view class="space-item">
   	  			<text class="text-left">当月欠费：</text>
@@ -73,7 +73,7 @@
   	  		</view>
 			<view class="space-item">
   	  			<text class="text-left">共计欠费：</text>
-  	  			<text class="text-right">{{shopinfo.arrearsamount}}</text>
+  	  			<text class="text-right">{{shopinfo.totalArrearage}}</text>
   	  		</view>
 			<view class="space-item">
   	  			<text class="text-left">押金(保证金+水电费)：</text>

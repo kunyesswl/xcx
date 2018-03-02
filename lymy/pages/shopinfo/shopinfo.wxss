@@ -3,3 +3,8 @@
 	width: 50%;
 	display: inline-block;
 }
+
+.text-label{
+	margin-right:30rpx;
+	text-decoration:underline;
+}

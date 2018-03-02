@@ -7,12 +7,13 @@ Page({
     showfilter:false, //是否显示下拉筛选
     showfilterindex:null, //显示哪个筛选类目
     pindex:0,  //一级分类索引
-    pid:null,  //一级分类id
+    pid:0,  //一级分类id
     aindex:0,  //一级城市索引
-    aid:null,  //一级城市id
+    aid:0,  //一级城市id
     shoplist:[], //服务集市列表
     scrolltop:null, //滚动位置
     page: 0  //分页
+	
   },
   onLoad: function () { //加载数据渲染页面
     this.fetchServiceData();
@@ -81,7 +82,8 @@ Page({
 					 "id":reslist[i].id,
 					"code":reslist[i].shopCode,
 					"arrears":reslist[i].arrearage==1?"欠费":"未欠费",
-					"customer":reslist[i].customerName
+					"customer":reslist[i].customerName,
+					"imgurl":"../../../images/shop.png"
 				})
 			 }
 			_this.setData({
@@ -116,6 +118,7 @@ Page({
   submitSearch:function(){  //提交搜索
     console.log(this.data.searchtext);
 	console.log(this.data.shoplist);
+	this.setData({page:0,shoplist:[]});
     this.fetchServiceData();
   },
   setFilterPanel: function(e){ //展开筛选面板

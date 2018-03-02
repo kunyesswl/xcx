@@ -8,6 +8,9 @@
 	font-weight:bold;
 	margin-top:10px;
 }
+.w_100per{
+	width:100%;
+}
 view{
 	color:#000;
 }
