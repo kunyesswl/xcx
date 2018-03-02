@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js');
 Page({
   data: {
     showsearch:false,   //显示搜索按钮
@@ -5,15 +6,11 @@ Page({
     filterdata:{},  //筛选条件数据
     showfilter:false, //是否显示下拉筛选
     showfilterindex:null, //显示哪个筛选类目
-    sortindex:0,  //一级分类索引
-    sortid:null,  //一级分类id
-    subsortindex:0, //二级分类索引
-    subsortid:null, //二级分类id
-    cityindex:0,  //一级城市索引
-    cityid:null,  //一级城市id
-    subcityindex:0,  //二级城市索引
-    subcityid:null, //二级城市id
-    servicelist:[], //服务集市列表
+    pindex:0,  //一级分类索引
+    pid:null,  //一级分类id
+    aindex:0,  //一级城市索引
+    aid:null,  //一级城市id
+    shoplist:[], //服务集市列表
     scrolltop:null, //滚动位置
     page: 0  //分页
   },
@@ -24,190 +21,33 @@ Page({
   fetchFilterData:function(){ //获取筛选条件
     this.setData({
       filterdata:{
-        "sort": [
+        "place": [
             {
                 "id": 0,
                 "title": "全部"
             },
             {
               "id": 1,
-              "title": "人力资源",
-              "subsort": [
-                {
-                    "id": 1,
-                    "title": "全部"
-                },
-                {
-                    "id": 11,
-                    "title": "社会及商业保险"
-                },
-                {
-                    "id": 12,
-                    "title": "招聘、猎头"
-                },
-                {
-                    "id": 13,
-                    "title": "薪酬绩效"
-                },
-              ]
+              "title": "广场"
             },
             {
               "id": 2,
-              "title": "财务法务",
-              "subsort": [
-                {
-                    "id": 2,
-                    "title": "全部"
-                },
-                {
-                    "id": 21,
-                    "title": "知识产权保护"
-                },
-                {
-                    "id": 22,
-                    "title": "工商注册"
-                },
-                {
-                    "id": 23,
-                    "title": "法律咨询"
-                },
-              ]
-            },
-            {
-              "id": 3,
-              "title": "行政办公",
-              "subsort": [
-                {
-                    "id": 3,
-                    "title": "全部"
-                },
-                {
-                    "id": 31,
-                    "title": "翻译"
-                },
-                {
-                    "id": 32,
-                    "title": "速记"
-                }
-              ]
-            },
-            {
-              "id": 4,
-              "title": "创业指导",
-              "subsort": [
-                {
-                    "id": 4,
-                    "title": "全部"
-                },
-                {
-                    "id": 41,
-                    "title": "创业培训"
-                }
-              ]
+              "title": "分场"
+             
             },
         ],
-        "city": [
+        "arrear": [
             {
                 "id": 0,
                 "title": "全部"
             },
             {
               "id": 1,
-              "title": "湖北省",
-              "subcity": [
-                {
-                    "id": 1,
-                    "title": "全部"
-                },
-                {
-                    "id": 11,
-                    "title": "武汉市"
-                },
-                {
-                    "id": 12,
-                    "title": "襄阳市"
-                },
-                {
-                    "id": 13,
-                    "title": "孝感市"
-                },
-                {
-                    "id": 14,
-                    "title": "随州市"
-                },
-                {
-                    "id": 15,
-                    "title": "荆州市"
-                },
-                {
-                    "id": 16,
-                    "title": "黄冈市"
-                },
-                {
-                    "id": 17,
-                    "title": "天门市"
-                },
-                {
-                    "id": 18,
-                    "title": "仙桃市"
-                },
-                {
-                    "id": 19,
-                    "title": "潜江市"
-                },
-                {
-                    "id": 20,
-                    "title": "十堰市"
-                },
-                {
-                    "id": 21,
-                    "title": "宜昌市"
-                },
-                {
-                    "id": 22,
-                    "title": "咸宁市"
-                },
-              ]
+              "title": "欠费"
             },
             {
               "id": 2,
-              "title": "浙江省",
-              "subcity": [
-                {
-                    "id": 2,
-                    "title": "全部"
-                },
-                {
-                    "id": 21,
-                    "title": "杭州市"
-                },
-                {
-                    "id": 22,
-                    "title": "金华市"
-                },
-                {
-                    "id": 23,
-                    "title": "义乌市"
-                },
-              ]
-            },
-            {
-              "id": 3,
-              "title": "江苏省",
-              "subcity": [
-                {
-                    "id": 3,
-                    "title": "全部"
-                },
-                {
-                    "id": 31,
-                    "title": "南京市"
-                },
-                {
-                    "id": 32,
-                    "title": "苏州市"
-                }
-              ]
+              "title": "未欠费"
             }
         ],
       }
@@ -225,20 +65,47 @@ Page({
     })
     const page = this.data.page;
     const newlist = [];
+	
+	 var data = {
+		 "placeType":this.data.pid,
+		 "type": this.data.aid,
+		 "page":page
+	 }
+	util.httppost("https://www.kunyesswl.com/wxspl/getShopList",data,function(res){
+		//console.log(res);
+		if(res.data.code=="0"){
+			var newlist = [];
+			var reslist = res.data.data;
+			 for (var i = 0; i < reslist.length; i++) {
+				 newlist.push({
+					 "id":reslist[i].id,
+					"code":reslist[i].shopCode,
+					"arrears":reslist[i].arrearage==1?"欠费":"未欠费",
+					"customer":reslist[i].customerName
+				})
+			 }
+			_this.setData({
+				shoplist:_this.data.shoplist.concat(newlist)
+			})
+		}
+	});
+	/*
     for (var i = (page-1)*perpage; i < page*perpage; i++) {
+		var arre = i>3&&i<8?"是":"否";
+		var statu = i>6&&i<12?"已租":"空铺";
       newlist.push({
-        "id":i+1,
-        "name":"广州利远贸易"+(i+1),
-        "city":"广州",
-        "tag":"物业管理",
-        "imgurl":"http://img.mukewang.com/57fdecf80001fb0406000338-240-135.jpg"
+        "code":"A00"+(i+1),
+        "statu":statu,
+        "arrears":arre,
+        "customer":"客户"+(i+1),
+        "phone":"138001380000"
       })
     }
     setTimeout(()=>{
       _this.setData({
-        servicelist:_this.data.servicelist.concat(newlist)
+        shoplist:_this.data.shoplist.concat(newlist)
       })
-    },1500)
+    },1500)*/
   },
   inputSearch:function(e){  //输入搜索文字
     this.setData({
@@ -248,6 +115,7 @@ Page({
   },
   submitSearch:function(){  //提交搜索
     console.log(this.data.searchtext);
+	console.log(this.data.shoplist);
     this.fetchServiceData();
   },
   setFilterPanel: function(e){ //展开筛选面板
@@ -266,41 +134,25 @@ Page({
     }
     console.log(d.showfilterindex);
   },
-  setSortIndex:function(e){ //服务类别一级索引
+  setPlaceIndex:function(e){ //服务类别一级索引
     const d= this.data;
     const dataset = e.currentTarget.dataset;
     this.setData({
-      sortindex:dataset.sortindex,
-      sortid:dataset.sortid,
-      subsortindex: d.sortindex==dataset.sortindex ? d.subsortindex:0
-    })
-    console.log('服务类别id：一级--'+this.data.sortid+',二级--'+this.data.subsortid);
+      pindex:dataset.pindex,
+      pid:dataset.pid
+    });
+    console.log('广场类别id：-- '+this.data.pid);
+	//this.fetchServiceData();
   },
-  setSubsortIndex:function(e){ //服务类别二级索引
-    const dataset = e.currentTarget.dataset;
-    this.setData({
-      subsortindex:dataset.subsortindex,
-      subsortid:dataset.subsortid,
-    })
-    console.log('服务类别id：一级--'+this.data.sortid+',二级--'+this.data.subsortid);
-  },
-  setCityIndex:function(e){ //服务城市一级索引
+  setArrearIndex:function(e){ //服务城市一级索引
     const d= this.data;
     const dataset = e.currentTarget.dataset;
     this.setData({
-      cityindex:dataset.cityindex,
-      cityid:dataset.cityid,
-      subcityindex: d.cityindex==dataset.cityindex ? d.subcityindex:0
+      aindex:dataset.aindex,
+      aid:dataset.aid
     })
-    console.log('服务城市id：一级--'+this.data.cityid+',二级--'+this.data.subcityid);
-  },
-  setSubcityIndex:function(e){ //服务城市二级索引
-    const dataset = e.currentTarget.dataset;
-    this.setData({
-      subcityindex:dataset.subcityindex,
-      subcityid:dataset.subcityid,
-    })
-    console.log('服务城市id：一级--'+this.data.cityid+',二级--'+this.data.subcityid);
+    console.log('欠费情况id：一级 -- '+this.data.aid);
+//	this.fetchServiceData();
   },
   hideFilter: function(){ //关闭筛选面板
     this.setData({
@@ -324,7 +176,7 @@ Page({
   onPullDownRefresh:function(){ //下拉刷新
     this.setData({
       page:0,
-      servicelist:[]
+      shoplist:[]
     })
     this.fetchServiceData();
     this.fetchFilterData();
@@ -333,3 +185,4 @@ Page({
     },1000)
   }
 })
+

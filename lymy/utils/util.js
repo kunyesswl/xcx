@@ -180,7 +180,7 @@ function httppost(url,data,callback,failCallback){
 	wx.request({  
           url: url,  
           data: data,  
-          method: 'GET',  
+          method: 'POST',  
           success:function(res) {  
               callback(res); 
           },  
