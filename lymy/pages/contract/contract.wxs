@@ -1,0 +1,10 @@
+var putil = {
+  toFix: function (value){
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+var msg ="this is abc";
+module.exports = {
+  toFix: putil.toFix,
+  msg:msg
+}
