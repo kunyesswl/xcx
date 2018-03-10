@@ -11,6 +11,11 @@
 .w_100per{
 	width:100%;
 }
+
+.input-list form .input-item:first-child{
+	border-top:1rpx solid #e8e8e8
+}
+
 view{
 	color:#000;
 }

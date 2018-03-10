@@ -109,18 +109,18 @@
 						<input type="digit" name="rentalPerMonth1" placeholder="多少元/平方米" bindblur="bindInputChange" id="rentalPerMonth1"></input>
 					</view>
 				</view>
-				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第一年合计</text>
-					<view class="input-item-content" style="display:flex;">
+					<view class="input-item-content">
 						<input type="digit" name="rentalAmonth" placeholder="首年月租金合计多少元" value="{{p.toFix(leaseArea*rentalPerMonth1)}}"></input>
-						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
+				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第二年</text>
-					<view class="input-item-content">
+					<view class="input-item-content" style="display:flex;">
 						<input type="digit" name="rentalPerMonth2" placeholder="第二年月租金多少元" value="{{p.toFix(leaseArea*rentalPerMonth1*1.05)}}"></input>
+						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
 				<view class="input-item">
@@ -154,18 +154,18 @@
 						<input type="digit" name="chargePerMonthPerSq" placeholder="每月每平方米多少元" bindblur="bindInputChange" id="chargePerMonthPerSq"></input>
 					</view>
 				</view>
-				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第一年合计</text>
-					<view class="input-item-content" style="display:flex;">
+					<view class="input-item-content">
 						<input type="digit" name="chargePerMonthY1" placeholder="市场管理费合计每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq)}}"></input>
-						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
+				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第二年</text>
-					<view class="input-item-content">
+					<view class="input-item-content" style="display:flex;">
 						<input type="digit" name="chargePerMonthY2" placeholder="每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq*1.05)}}"></input>
+						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
 				<view class="input-item">
