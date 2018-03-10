@@ -106,45 +106,48 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">承租面积</text>
 					<view class="input-item-content">
-						<input type="digit" name="leaseArea" placeholder="请输入承租面积多少平方米" value="{{shoparea}}"></input>
+						<input type="digit" name="leaseArea" placeholder="请输入承租面积多少平方米" value="{{shoparea}}" bindblur="bindInputChange" id="leaseArea"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">首年每月</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth1" placeholder="多少元/平方米"></input>
+						<input type="digit" name="rentalPerMonth1" placeholder="多少元/平方米" bindblur="bindInputChange" id="rentalPerMonth1"></input>
 					</view>
 				</view>
+				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第一年合计</text>
-					<view class="input-item-content">
-						<input type="digit" name="rentalAmonth" placeholder="月租金合计多少元"></input>
+					<view class="input-item-content" style="display:flex;">
+						<input type="digit" name="rentalAmonth" placeholder="月租金合计多少元" value="{{p.toFix(leaseArea*rentalPerMonth1)}}"></input>
+						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第二年</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth2" placeholder="第二年月租金多少元"></input>
+						<input type="digit" name="rentalPerMonth2" placeholder="第二年月租金多少元" value="{{p.toFix(leaseArea*rentalPerMonth1*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第三年</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth3" placeholder="第三年月租金多少元"></input>
+						<input type="digit" name="rentalPerMonth3" placeholder="第三年月租金多少元" value="{{p.toFix(leaseArea*rentalPerMonth1*1.05*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第四年</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth4" placeholder="第四年月租金多少元"></input>
+						<input type="digit" name="rentalPerMonth4" placeholder="第四年月租金多少元" value="{{p.toFix(leaseArea*rentalPerMonth1*1.05*1.05*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第五年</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth5" placeholder="第五年月租金多少元"></input>
+						<input type="digit" name="rentalPerMonth5" placeholder="第五年月租金多少元" value="{{p.toFix(leaseArea*rentalPerMonth1*1.05*1.05*1.05*1.05)}}"></input>
 					</view>
 				</view>
+				</form>
 			</view>
 		</view>
 		
@@ -154,39 +157,42 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">市场管理费</text>
 					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthPerSq" placeholder="每月每平方米多少元"></input>
+						<input type="digit" name="chargePerMonthPerSq" placeholder="每月每平方米多少元" bindblur="bindInputChange" id="chargePerMonthPerSq"></input>
 					</view>
 				</view>
+				<form>
 				<view class="input-item">
 					<text class="input-item-label_c000">第一年合计</text>
-					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthY1" placeholder="市场管理费合计每月多少元"></input>
+					<view class="input-item-content" style="display:flex;">
+						<input type="digit" name="chargePerMonthY1" placeholder="市场管理费合计每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq)}}"></input>
+						<button class="btn-block btn-orange" style="width:60px;line-height:60rpx;" formType="reset">清除</button>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第二年</text>
 					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthY2" placeholder="第二年每月多少元"></input>
+						<input type="digit" name="chargePerMonthY2" placeholder="第二年每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第三年</text>
 					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthY3" placeholder="第三年每月多少元"></input>
+						<input type="digit" name="chargePerMonthY3" placeholder="第三年每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq*1.05*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第四年</text>
 					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthY4" placeholder="第四年每月多少元"></input>
+						<input type="digit" name="chargePerMonthY4" placeholder="第四年每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq*1.05*1.05*1.05)}}"></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label_c000">第五年</text>
 					<view class="input-item-content">
-						<input type="digit" name="chargePerMonthY5" placeholder="第五年每月多少元"></input>
+						<input type="digit" name="chargePerMonthY5" placeholder="第五年每月多少元" value="{{p.toFix(leaseArea*chargePerMonthPerSq*1.05*1.05*1.05*1.05)}}"></input>
 					</view>
 				</view>
+				</form>
 			</view>
 		</view>	
 		<view class="group-header">其他费用</view>
@@ -201,7 +207,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">综合费用</text>
 					<view class="input-item-content">
-						<input type="digit" name="multiplePerYear" placeholder="每年多少元"></input>
+						<input type="digit" name="multiplePerYear" value="{{p.toFix(shoparea*13.4)}}" placeholder="每年多少元"></input>
 					</view>
 				</view>
 				<view class="input-item">
@@ -224,7 +230,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">履约保证金</text>
 					<view class="input-item-content">
-						<input type="digit" name="deposit" placeholder="履约保证金多少元"></input>
+						<input type="digit" name="deposit" placeholder="履约保证金多少元" value="{{p.toFix(leaseArea*(chargePerMonthPerSq+rentalPerMonth1)*2)}}"></input>
 					</view>
 				</view>
 			</view>

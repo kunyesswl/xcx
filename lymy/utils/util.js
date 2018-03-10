@@ -45,6 +45,9 @@ const getRandomArray = (arr, count) => {
   return shuffled.slice(min);
 }
 
+function toFixed(num){
+	return num.toFixed(2);
+}
 /**
 * 从一个数组中随机取出一个元素
 * @param {Array} arr 原数组
@@ -183,6 +186,7 @@ function httppost(url,data,callback,failCallback){
           data: json2str(data),  
           method: 'POST',  
           success:function(res) {  
+			  msg("调用成功");
               callback(res); 
           },  
           fail:function(res){
@@ -195,6 +199,7 @@ function httppost(url,data,callback,failCallback){
 			  }
           },
 		  complete:function(res){
+			  msg("调用完成");
 			  hloading(); 
 		  }
       });  

@@ -1,3 +1,4 @@
+<wxs module="p" src="contract.wxs"/>
 <view class="container container-gray">
 <form bindsubmit="formSubmit">
 	<block wx:if="{{contractType==1}}">
