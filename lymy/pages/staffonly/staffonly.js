@@ -25,17 +25,14 @@ Page({
         {
           'icon':'./../../images/icon_25.png',
           'text':'商铺信息',
-          'url':'shoplist'
         },
         {
           'icon':'./../../images/icon_13.png',
           'text':'请假申请',
-          'url':'apply'
         },
 		{
           'icon':'./../../images/icon_11.png',
           'text':'调班申请',
-          'url':'staffonly'
         }
       ]
     })

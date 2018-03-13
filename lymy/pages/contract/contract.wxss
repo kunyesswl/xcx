@@ -2,6 +2,7 @@
 	display: block;
 	width: 5em;
 	color: #000;
+  width: 100px;
 	padding-right:10rpx;
 }
 .group-header{

@@ -24,33 +24,21 @@ Page({
         {
           'icon':'./../../images/icon_01.png',
           'text':'费用查询',
-          'url':'cost'
         },
         {
           'icon':'./../../images/icon_03.png',
           'text':'报事报修',
-          'url':'property'
         },
         {
           'icon':'./../../images/icon_05.png',
           'text':'通知公告',
-          'url':'conference'
         },
-        {
-          'icon':'./../../images/icon_07.png',
-          'text':'客户咨询',
-          'url':'resource'
-        },
+        
         {
           'icon':'./../../images/icon_09.png',
           'text':'投诉建议',
-          'url':'question'
         },
-        {
-          'icon':'./../../images/icon_13.png',
-          'text':'入驻申请',
-          'url':'apply'
-        },
+       
 		{
           'icon':'./../../images/icon_11.png',
           'text':'员工通道',

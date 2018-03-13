@@ -292,6 +292,7 @@ function json2str(json) {
 }
 module.exports = {
   formatTime: formatTime,
+  formatDate:formatDate,
   getRandomArray: getRandomArray,
   getRandomArrayElement: getRandomArrayElement,
   isBlank:isBlank,

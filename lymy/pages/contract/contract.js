@@ -8,7 +8,7 @@ Page({
 	endDate:"2018-01-01",
 	shopNo:"",	//铺位号
 	shoparea:"", //面积
-	rentalPerMonth1:"",
+	rentalPer:"",
 	leaseArea:"",
 	chargePerMonthPerSq:"",
 	floorarry:["请选择楼层","首","二","三","四","五","六","七","八"],
@@ -18,7 +18,17 @@ Page({
 	scopearry:["请选择经营范围","汽车用品","汽车配件"],
 	scopeindex:0,
 	leasearry:["请选择租凭期年数","一","二","三","四","五","六","七","八","九","十"],
-	leaseindex:0
+	leaseindex:0,
+	rentalPerMonth1:0,
+	rentalPerMonth2:0,
+	rentalPerMonth3:0,
+	rentalPerMonth4:0,
+	rentalPerMonth5:0,
+	chargePerMonthY1:0,
+	chargePerMonthY2:0,
+	chargePerMonthY3:0,
+	chargePerMonthY4:0,
+	chargePerMonthY5:0
   },
   onLoad: function (option) {
 	this.validate = new verify.WxValidate(
@@ -73,8 +83,11 @@ Page({
 	var type = e.currentTarget.dataset.type;
     switch (type) {
       case '1':
+		var date = new Date(e.detail.value);
+		date.setFullYear(date.getFullYear()+parseInt(this.data.leaseindex))
 		this.setData({
-			startDate:e.detail.value
+			startDate:e.detail.value,
+			endDate:util.formatDate(date)
 		});
 		break;
       case '2':
@@ -99,20 +112,40 @@ Page({
 			leaseArea:e.detail.value
 		});
 	  break;
-	  case 'rentalPerMonth1':
+	  case 'rentalPer':
 		this.setData({
-			rentalPerMonth1:e.detail.value
+			rentalPer:e.detail.value
 		});
+		var v0 = e.detail.value*this.data.leaseArea;
+		this.countYAS(1,v0,this);
 	  break;
 	  case 'leaseArea':
 		this.setData({
 			leaseArea:e.detail.value
 		});
+		if(this.data.rentalPer){
+			var v0 = e.detail.value*this.data.rentalPer;
+			this.countYAS(1,v0,this);
+		}
+		if(this.data.chargePerMonthPerSq){
+			var v0 = e.detail.value*this.data.chargePerMonthPerSq;
+			this.countYAS(2,v0,this);
+		}
+	  break;
+	  case 'rentalAmonth':
+		var v0 = e.detail.value;
+		this.countYAS(1,v0,this);
 	  break;
 	  case 'chargePerMonthPerSq':
 		this.setData({
 			chargePerMonthPerSq:e.detail.value
 		});
+		var v0 = e.detail.value*this.data.leaseArea;
+		this.countYAS(2,v0,this);
+	  break;
+	  case 'chargePerMonthY1':
+		var v0 = e.detail.value;
+		this.countYAS(2,v0,this);
 	  break;
 	   }
   },
@@ -135,14 +168,79 @@ Page({
 		});
 		break;
 	 case 'leaseAmount':
+		var date = new Date(this.data.startDate);
+		date.setFullYear(date.getFullYear()+parseInt(e.detail.value))
 		this.setData({
-			leaseindex:e.detail.value
+			leaseindex:e.detail.value,
+			endDate:util.formatDate(date)
 		});
 	  break;
 	   }
   },
   cleartext:function(e){
-	  console.log(e);
+	console.log(e);
+	var type = e.currentTarget.dataset.type;
+    switch (type) {
+      case '1':
+		this.setData({
+			rentalPerMonth2:""
+		});
+		break;
+      case '2':
+		this.setData({
+			rentalPerMonth3:""
+		});
+		break;
+	  case '3':
+		this.setData({
+			rentalPerMonth4:""
+		});
+		break;
+	  case '4':
+		this.setData({
+			rentalPerMonth5:""
+		});
+		break;
+	  case '5':
+		this.setData({
+			chargePerMonthY2:""
+		});
+		break;
+	  case '6':
+		this.setData({
+			chargePerMonthY3:""
+		});
+		break;
+	  case '7':
+		this.setData({
+			chargePerMonthY4:""
+		});
+		break;
+	  case '8':
+		this.setData({
+			chargePerMonthY5:""
+		});
+		break;
+	}
+  },
+  countYAS:function(_t,_v0,_this){
+	  var v0 = parseInt(_v0);
+	   if(_t==1){
+		  _this.setData({
+			  rentalPerMonth1:v0,
+			  rentalPerMonth2:v0*1.05,
+			  rentalPerMonth3:v0*1.05*1.05,
+			  rentalPerMonth4:v0*1.05*1.05*1.05,
+			  rentalPerMonth5:v0*1.05*1.05*1.05*1.05});
+	  }else if(_t==2){
+		 _this.setData({
+			  chargePerMonthY1:v0,
+			  chargePerMonthY2:v0*1.05,
+			  chargePerMonthY3:v0*1.05*1.05,
+			  chargePerMonthY4:v0*1.05*1.05*1.05,
+			  chargePerMonthY5:v0*1.05*1.05*1.05*1.05});
+	  }
+	  
   },
   formSubmit:function(e){
 	  var data = e.detail.value;

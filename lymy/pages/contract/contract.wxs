@@ -1,6 +1,12 @@
 var putil = {
   toFix: function (value){
-    return value.toFixed(0)//此处2为保留两位小数
+	if(!value){
+		return value;
+	}
+	  if(!isNaN(value)){
+		 return value.toFixed(0);//此处2为保留两位小数
+	  }
+	return value;
   }
 }
 var msg ="this is abc";
