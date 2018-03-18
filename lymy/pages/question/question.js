@@ -1,4 +1,4 @@
-import util from './../../utils/util.js';
+var util = require('../../utils/util.js');
 Page({
   data: {
     showtab:0,  //顶部选项卡索引
@@ -48,32 +48,12 @@ Page({
     this.fetchQuestions();
   },
   chooseImage:function() {
-    let _this = this;
-    wx.showActionSheet({
-      itemList: ['从相册中选择', '拍照'],
-      itemColor: "#f7982a",
-      success: function(res) {
-        if (!res.cancel) {
-          if(res.tapIndex == 0){
-            _this.chooseWxImage('album')
-          }else if(res.tapIndex == 1){
-            _this.chooseWxImage('camera')
-          }
-        }
-      }
-    })
-  },
-  chooseWxImage:function(type){
-    let _this = this;
-    wx.chooseImage({
-      sizeType: ['original', 'compressed'],
-      sourceType: [type],
-      success: function (res) {
-        _this.setData({
-          uploadimgs: _this.data.uploadimgs.concat(res.tempFilePaths)
-        })
-      }
-    })
+	let _this = this;
+    util.chooseImage(function(res){
+		_this.setData({
+			uploadimgs: _this.data.uploadimgs.concat(res.tempFilePaths)
+		});
+	});
   },
   editImage:function(){
     this.setData({
@@ -145,5 +125,8 @@ Page({
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.ponenumber
     })
+  },
+  formSubmit: function(e){ //表单提交
+	  
   }
 })

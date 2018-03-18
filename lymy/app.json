@@ -17,6 +17,8 @@
     "pages/activity/activity",
     "pages/activitydetail/activitydetail",
     "pages/my/my",
+	"pages/permissionlist/permissionlist",
+	"pages/permissiondetail/permissiondetail",
 	"pages/staffonly/staffonly","pages/shoplist/shoplist","pages/shopinfo/shopinfo",
     "pages/myconferencelist/myconferencelist"
   ],

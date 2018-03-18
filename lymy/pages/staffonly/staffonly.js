@@ -24,15 +24,20 @@ Page({
         },
         {
           'icon':'./../../images/icon_25.png',
-          'text':'商铺信息',
+          'text':'商铺信息'
         },
         {
           'icon':'./../../images/icon_13.png',
-          'text':'请假申请',
+          'text':'请假申请'
         },
 		{
           'icon':'./../../images/icon_11.png',
-          'text':'调班申请',
+          'text':'调班申请'
+        },
+		{
+          'icon':'./../../images/icon_27.png',
+          'text':'员工权限',
+		  'url':'permissionlist'
         }
       ]
     })

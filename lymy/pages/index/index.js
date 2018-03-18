@@ -28,15 +28,18 @@ Page({
         {
           'icon':'./../../images/icon_03.png',
           'text':'报事报修',
+		  'url':'property'
         },
         {
           'icon':'./../../images/icon_05.png',
           'text':'通知公告',
+		  'url':'conference'
         },
         
         {
           'icon':'./../../images/icon_09.png',
           'text':'投诉建议',
+		  'url':'question'
         },
        
 		{

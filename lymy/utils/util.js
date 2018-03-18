@@ -146,7 +146,22 @@ function msg(mtitle,icon,callback){
 	})  
 	//sloading(mtitle , 3,false);
 }
+function config(mcontent,callback,failCallback){
+	wx.showModal({
+            title: '确认消息',
+            content: mcontent,
+            success: function (res) {
+                if (res.confirm) {
+                    if(callback)
+						callback();
+                }else{
+                   if(failCallback)
+					   failCallback();
+                }
 
+            }
+        })
+}
 function httpget(url,callback,failCallback){
 	sloading();
 	wx.request({  
@@ -186,7 +201,7 @@ function httppost(url,data,callback,failCallback){
           data: json2str(data),  
           method: 'POST',  
           success:function(res) {  
-			  msg("调用成功");
+			//  msg("调用成功");
               callback(res); 
           },  
           fail:function(res){
@@ -199,7 +214,7 @@ function httppost(url,data,callback,failCallback){
 			  }
           },
 		  complete:function(res){
-			  msg("调用完成");
+			  //msg("调用完成");
 			  hloading(); 
 		  }
       });  
@@ -243,6 +258,7 @@ function download(url){
     });
 	
 }
+
 
 function viewdoc(path,type){
 	 sloading("正在下载...",1800);
@@ -290,6 +306,66 @@ function json2str(json) {
 	}
 	return str.join("&");
 }
+
+const chooseImage = (_cb) =>{
+	wx.showActionSheet({
+      itemList: ['从相册中选择', '拍照'],
+      itemColor: "#f7982a",
+      success: function(res1) {
+        if (!res1.cancel) {
+			var _type ='';
+          if(res1.tapIndex == 0){
+			_type = 'album';
+          }else if(res1.tapIndex == 1){
+			_type = 'camera';
+          }
+		  wx.chooseImage({
+		  sizeType: ['original', 'compressed'],
+		  sourceType: [_type],
+		  success: function (res2) {
+			  typeof _cb == "function" && _cb(res2)
+			}
+		})
+        }
+      }
+    });
+}
+const uploadFiles = (_url,_formData,_filePaths,_cb) =>{
+	_uploadFile(_url,_formData,_filePaths,{},_cb)
+}
+const _uploadFile = (_url,_formData,_filePaths,_data,_cb) =>{
+	 var i=_data.i?_data.i:0,//当前上传的哪张图片
+     var success=_data.success?_data.success:0,//上传成功的个数
+     var fail=_data.fail?_data.fail:0;//上传失败的个数
+	wx.uploadFile({
+                    url: _url, 
+                    filePath: _filePaths[i],
+                    name: 'fileData',
+                    formData:_formData,
+                    success: (resp) => {
+                        success++;//图片上传成功，图片上传成功的变量+1
+                    },
+                    fail: (res) => {
+                        fail++;//图片上传失败，图片上传失败的变量+1
+                    },
+                    complete: () => {
+                        i ++;                        
+                        if(i == _filePaths.length)
+                        {                      
+                          console.log('总共'+success+'张上传成功,'+fail+'张上传失败！');
+						  typeof _cb == "function" && _cb({total:_filePaths.length,success:success,fail:fail});
+                        }
+                        else
+                        {  
+						  _data.i=i;
+						  _data.success=success;
+						  _data.fail=fail;
+                          this._uploadFile(_formData,_filePaths,i,_cb);
+                        }
+                    },
+                });
+}
+
 module.exports = {
   formatTime: formatTime,
   formatDate:formatDate,
@@ -302,9 +378,12 @@ module.exports = {
   sloading:sloading,
   hloading:hloading,
   msg:msg,
+  config:config,
   httpget:httpget,
   httppost:httppost,
   download:download,
   viewdoc:viewdoc,
-  json2str:json2str
+  json2str:json2str,
+  chooseImage:chooseImage,
+  uploadFiles:uploadFiles
 }
