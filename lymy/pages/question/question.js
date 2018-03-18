@@ -127,6 +127,9 @@ Page({
     })
   },
   formSubmit: function(e){ //表单提交
+	  var _this = this;
+	  var data = e.detail.value; //表单里面的数据，以name 为key ,value w为值
+	  //util.uploadFiles(url,data,uploadimgs,function(r){}); //上传图片同时提交表单信息 function(r) 为回调函数
 	  
   }
 })
