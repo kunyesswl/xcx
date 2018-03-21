@@ -334,8 +334,8 @@ const uploadFiles = (_url,_formData,_filePaths,_cb) =>{
 	_uploadFile(_url,_formData,_filePaths,{},_cb)
 }
 const _uploadFile = (_url,_formData,_filePaths,_data,_cb) =>{
-	 var i=_data.i?_data.i:0,//当前上传的哪张图片
-     var success=_data.success?_data.success:0,//上传成功的个数
+	 var i=_data.i?_data.i:0;//当前上传的哪张图片
+     var success=_data.success?_data.success:0;//上传成功的个数
      var fail=_data.fail?_data.fail:0;//上传失败的个数
 	wx.uploadFile({
                     url: _url, 
