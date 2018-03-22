@@ -1,0 +1,23 @@
+<view class="container">
+	<view class="search-flex {{scrolltop>200?'tophide':''}}">
+		<view class="search-bar">
+			<input type="text" maxlength="12" placeholder="请输入关键字查询" bindinput="inputSearch"></input>
+			<!--<button class="search-btn" bindtap="submitSearch" wx:if="{{showsearch}}">搜索</button> -->
+		</view>
+		<button class="search-extra-btn" bindtap="submitSearch">查询</button>
+	</view>
+	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
+		<view class="service-list">
+			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admquestiondetail/admquestiondetail?id={{item.id}}">
+				<view class="service-left">
+					<text class="service-city">{{item.title}}</text>
+				</view>
+				<view class="service-text">
+					<view><text class="service-city">联系人：{{item.contactor}}</text></view>
+					<view><text class="service-city">咨询时间：{{item.createTime}}</text></view>
+				</view>
+			</navigator>
+		</view>
+		<view class="gototop {{scrolltop>200?'active':''}}" bindtap="goToTop"></view>
+	</scroll-view>
+</view>

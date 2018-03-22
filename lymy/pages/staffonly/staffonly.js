@@ -38,6 +38,21 @@ Page({
           'icon':'./../../images/icon_27.png',
           'text':'员工权限',
 		  'url':'permissionlist'
+        },
+		{
+          'icon':'./../../images/icon_27.png',
+          'text':'公告发布',
+		  'url':'permissionlist'
+        },
+		{
+          'icon':'./../../images/icon_27.png',
+          'text':'报修查询',
+		  'url':'admpropertylist'
+        },
+		{
+          'icon':'./../../images/icon_27.png',
+          'text':'咨询查询',
+		  'url':'admquestionlist'
         }
       ]
     })

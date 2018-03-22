@@ -1,19 +1,41 @@
 <view class="container container-gray">
+	<form bindsubmit="formSubmit">
 	<view class="group">
-		<view class="group-header">选择报销物品</view>
+		<view class="group-header">选择报修物品</view>
 		<view class="group-body">
 			<view class="multiple-select">
+				<input type="text" name="title" value="{{title}}" hidden="true"></input>
 				<view wx:for="{{checitems}}" wx:key="{{item.id}}">
-					<text data-id="{{item.id}}"bindtap="onSelectTag" class="{{selectedid==item.id?'active':''}}">{{item.text}}</text>
+					<text data-id="{{item.id}}" data-text="{{item.text}}" bindtap="onSelectTag" class="{{selectedid==item.id?'active':''}}">{{item.text}}</text>
 				</view>
 			</view>
 		</view>
+		
 		<view class="group-header">问题描述</view>
 		<view class="group-body">
-			<textarea placeholder="请输入您的详细问题，我们将尽快解决"></textarea>
+			<textarea name="content" placeholder="请输入您的详细问题，我们将尽快解决"></textarea>
 		</view>
+		<view class="group-header">联系信息</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">商户号</text>
+					<view class="input-item-content">
+						<input type="text" name="shopcode" placeholder="请输入商户号"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系电话</text>
+					<view class="input-item-content">
+						<input type="text" name="mobile" placeholder="请输入联系电话" ></input>
+					</view>
+				</view>
+			</view>
+		</view>
+		
 	</view>
 	<view class="btn-submit">
-		<button class="btn-block btn-orange">提交</button>
+		<button class="btn-block btn-orange" formType="submit">提交</button>
 	</view>
+	</form>
 </view>

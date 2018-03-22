@@ -1,0 +1,44 @@
+<view class="container container-gray">
+	<view class="group">
+		<view class="group-header">问题描述</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">标题</text>
+					<view class="input-item-content">
+						<text>{{title}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">问题描述</text>
+					<view class="input-item-content">
+						<text>{{content}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="group-header">图片信息</view>
+		<view class="group-body">
+			<view class="conference-item-img" wx:for="{{imgs}}" wx:for-item="item">
+					<image src="{{item}}" mode="aspectFill"></image>
+			</view>
+		</view>
+		<view class="group-header">联系信息</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">联系人</text>
+					<view class="input-item-content">
+						<text>{{contactor}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系电话</text>
+					<view class="input-item-content">
+						<text>{{mobile}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

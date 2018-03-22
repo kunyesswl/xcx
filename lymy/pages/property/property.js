@@ -1,8 +1,10 @@
+var util = require('../../utils/util.js');
 Page({
   data: {
     checitems:[],
     // selected:null,
-    selectedid: null
+    selectedid: null,
+	title:""
   },
   onLoad: function () {
     this.setData({
@@ -56,11 +58,40 @@ Page({
   },
   onSelectTag: function(e){
     const eid = e.currentTarget.dataset.id;
+	const title = e.currentTarget.dataset.text;
     const selected = this.data.selected;
     this.setData({
       // selected:selected.indexOf(eid)>-1?selected.filter(i=>i!=eid):selected.concat(eid)
-      selectedid:eid
+      selectedid:eid,
+	  title:title
     })
     console.log(this.data.selectedid);
+  },formSubmit:function(e){
+	  var _this = this;
+	  var data = e.detail.value;
+	  var url = "https://www.kunyesswl.com/wxspl/func/submitRepair/";
+	  
+	  if(data.shopCode==""){
+		  util.msg("请输入商户号");
+		  return;
+	  }else if(data.mobile==""){
+		  util.msg("请输入手机号码");
+		  return;
+	  }else if(data.content==""){
+		  util.msg("请输入报修内容");
+		  return;
+	  }else if(data.title==""){
+		  util.msg("请选择报修事项");
+		  return;
+	  }
+	  util.httppost(url,data,function(res){
+		  console.log(res);
+		  if(res.data.code=="0"){
+			  util.msg("提交成功");
+		  }else{
+			  util.msg("提交失败");
+		  }
+	  });
+	  console.log(data);
   }
 })

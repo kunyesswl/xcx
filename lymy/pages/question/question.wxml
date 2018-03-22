@@ -30,7 +30,7 @@
 					<view class="input-item">
 						<text class="input-item-label">联系人</text>
 						<view class="input-item-content">
-							<input type="text" auto-focus placeholder="请输入您的姓名" name="userName"></input>
+							<input type="text" auto-focus placeholder="请输入您的姓名" name="linkman"></input>
 						</view>
 					</view>
 					<view class="input-item">
