@@ -27,11 +27,9 @@ Page({
     const newlist = [];
 	
 	 var data = {
-		 "placeType":this.data.pid,
-		 "type": this.data.aid,
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/func/repairQuery/pageList/",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=1",data,function(res){
 		console.log(res);
 		if(res.data.code=="000"){
 			var newlst = [];
@@ -42,7 +40,7 @@ Page({
 				 newlst.push({
 					 "id":reslist[i].id,
 					"title":reslist[i].title,
-					"shopCode":reslist[i].shopCode,
+					"creator":reslist[i].creator,
 					"createTime":reslist[i].createTime
 				})
 			 }
@@ -52,18 +50,6 @@ Page({
 			}
 		}
 	});
-  },
-  testperlist:function(){
-	  var newlist = [];
-	  for (var i = 0; i < 50; i++) {
-				 newlist.push({
-					"id":"abc1234",
-					"title":"水电报修",
-					"shopCode":"A0123412",
-					"createTime":"2018-03-04"
-				})
-	  }
-	  return newlist;
   },
   inputSearch:function(e){  //输入搜索文字
     this.setData({
@@ -82,9 +68,9 @@ Page({
       scrolltop:e.detail.scrollTop
     })
   },
-  newpermission:function(e){
+  newnotice:function(e){
 	wx.navigateTo({
-      url: '../permissiondetail/permissiondetail'
+      url: '../admnoticedetail/admnoticedetail'
     })
   },
   goToTop:function(){ //回到顶部

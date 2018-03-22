@@ -18,19 +18,19 @@ Page({
   fetchData: function(){
 	  var _id = this.data.id;
 	  var _this = this;
-	 util.httppost("https://www.kunyesswl.com/wxspl/func/repairDetail/",{id:_id},function(res){
+	 util.httppost("https://www.kunyesswl.com/wxspl/func/complaintsDetail/",{id:_id},function(res){
 		  console.log(res);
-			//if(res.data.code=="0"){
-			//var reslist = res.data.detail;
-			
+			if(res.data.code=="000"){
+			var detail = res.data.detail;
 			_this.setData({
-				id:"abc123",
-				title:"叫外卖",
-				content:"请问这里怎么叫外卖？",
-				contactor:"焦友军",
+				id:detail.id,
+				title:detail.title,
+				content:detail.content,
+				contactor:detail.contactor,
 				imgs:["http://pic.58pic.com/58pic/12/34/51/85d58PICkjf.jpg","http://pic.58pic.com/58pic/12/34/51/85d58PICkjf.jpg"],
-				mobile:"13800138000"
+				mobile:detail.mobile
 			});
-		});
+		}
+	});
   }
 })

@@ -17,17 +17,18 @@ Page({
   fetchData: function(){
 	  var _id = this.data.id;
 	  var _this = this;
-	 //util.httppost("https://www.kunyesswl.com/wxspl/func/repairDetail/",{id:_id},function(res){
-	//	  console.log(res);
-			//if(res.data.code=="0"){
-			//var reslist = res.data.detail;
+		util.httppost("https://www.kunyesswl.com/wxspl/func/repairDetail/",{id:_id},function(res){
+		  console.log(res);
+			if(res.data.code=="000"){
+			var detail = res.data.detail;
 			_this.setData({
-				id:"abc123",
-				title:"水电报修",
-				content:"水表漏水了，赶紧过来修啊！",
-				shopcode:"A009214",
-				mobile:"13800138000"
+				id:detail.id,
+				title:detail.title,
+				content:detail.content,
+				shopcode:detail.shopCode,
+				mobile:detail.mobile
 			});
-		//});
+		   }
+		});
   }
 })

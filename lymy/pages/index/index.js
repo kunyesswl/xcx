@@ -33,7 +33,7 @@ Page({
         {
           'icon':'./../../images/icon_05.png',
           'text':'通知公告',
-		  'url':'conference'
+		  'url':'noticelist'
         },
         
         {

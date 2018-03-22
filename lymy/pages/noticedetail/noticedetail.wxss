@@ -1,0 +1,6 @@
+.input-item-content .ctn{
+	text-indent: 20rpx;
+	text-align: left;
+	display:block;
+	height:600rpx;
+}

@@ -1,0 +1,24 @@
+<view class="container container-gray">
+		<view class="group">
+			<view class="group-header">公告标题</view>
+			<view class="group-body">
+				<view class="input-list">
+					<view class="input-item">
+						<view class="input-item-content">
+							<text>{{title}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="group-header">公告内容</view>
+			<view class="group-body">
+				<view class="input-item">
+					<view class="input-item">
+						<view class="input-item-content">
+							<text class="ctn">{{content}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+</view>

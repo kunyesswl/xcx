@@ -1,0 +1,24 @@
+<view class="container container-gray">
+<form bindsubmit="formSubmit">
+		<view class="group">
+			<view class="group-header">公告信息</view>
+			<view class="group-body">
+				<view class="input-list">
+					<view class="input-item">
+						<text class="input-item-label">标题</text>
+						<view class="input-item-content">
+							<input type="text" name="id" value="{{id}}" hidden="true"></input>
+							<input type="text" name="isAbout" value="1" hidden="true"></input>
+							<input type="text" auto-focus placeholder="标题" name="title" value="{{title}}"></input>
+						</view>
+					</view>
+				</view>
+				<textarea placeholder="请输入公告信息，最多可以输入1000字" maxlength="1000" name="content" value="{{content}}"></textarea>
+			</view>
+		</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit">提交</button>
+		<button class="btn-block_1_2" bindtap="onDelete">删除</button>
+	</view>
+</form>
+</view>

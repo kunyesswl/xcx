@@ -42,7 +42,7 @@ Page({
 		{
           'icon':'./../../images/icon_27.png',
           'text':'公告发布',
-		  'url':'permissionlist'
+		  'url':'admnoticelist'
         },
 		{
           'icon':'./../../images/icon_27.png',

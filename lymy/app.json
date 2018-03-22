@@ -23,6 +23,10 @@
 	"pages/admpropertydetail/admpropertydetail",
 	"pages/admquestionlist/admquestionlist",
 	"pages/admquestiondetail/admquestiondetail",
+	"pages/admnoticelist/admnoticelist",
+	"pages/admnoticedetail/admnoticedetail",
+	"pages/noticelist/noticelist",
+	"pages/noticedetail/noticedetail",
 	"pages/staffonly/staffonly","pages/shoplist/shoplist","pages/shopinfo/shopinfo",
     "pages/myconferencelist/myconferencelist"
   ],
