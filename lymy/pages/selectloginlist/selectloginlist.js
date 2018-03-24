@@ -13,7 +13,7 @@ Page({
   onLoad: function () { //加载数据渲染页面
     this.fetchServiceData();
   },
-  fetchServiceData:function(){  //获取权限列表
+  fetchServiceData:function(){  //获取报修列表
     let _this = this;
     wx.showToast({
       title: '加载中',
@@ -31,25 +31,23 @@ Page({
 		 "type": this.data.aid,
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/selectEmployeeList",data,function(res){
+   util.httppost("https://www.kunyesswl.com/wxspl/selectAccessUser",data,function(res){
 		console.log(res);
-		if(res.data.code=="0"){
-			var newlist = [];
+		if(res.data.code=="000"){
+			var newlst = [];
 			var reslist = res.data.data;
 			//var reslist = _this.testperlist();
 			if(reslist){
 				for (var i = 0; i < reslist.length; i++) {
-				 newlist.push({
+				 newlst.push({
 					 "id":reslist[i].id,
-					"mobile":reslist[i].mobile,
-					"userName":reslist[i].userName,
-					"openId":reslist[i].openId,
-					"createTime":reslist[i].createTime,
-					"imgurl":"../../../images/staff_01.png"
+					"title":reslist[i].nickName,
+					"shopCode":reslist[i].mobile,
+					"createTime":reslist[i].loginTime
 				})
 			 }
 			_this.setData({
-				perlist:_this.data.perlist.concat(newlist)
+				perlist:_this.data.perlist.concat(newlst)
 			})
 			}
 		}
@@ -59,12 +57,10 @@ Page({
 	  var newlist = [];
 	  for (var i = 0; i < 50; i++) {
 				 newlist.push({
-					 "id":i,
-					"mobile":"13800138000",
-					"userName":"成渝动",
-					"openId":"openid190141233333",
-					"createTime":"2018-03-01",
-					"imgurl":"../../../images/staff_01.png"
+					"id":"abc1234",
+					"title":"水电报修",
+					"shopCode":"A0123412",
+					"createTime":"2018-03-04"
 				})
 	  }
 	  return newlist;
@@ -88,7 +84,7 @@ Page({
   },
   newpermission:function(e){
 	wx.navigateTo({
-      url: '../permissiondetail/permissiondetail'
+    url: '../selectlogindetail/selectlogindetail'
     })
   },
   goToTop:function(){ //回到顶部

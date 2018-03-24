@@ -27,7 +27,7 @@ const getAllPermission = (cb) => {
 }
 */
 const getAllPermission = () => {
-	return [ {"id":1,"functionName":"合同签署"},{"id":2,"functionName":"商铺信息"},{"id":3,"functionName":"请假申请"},{"id":4,"functionName":"调休申请"},{"id":5,"functionName":"公告查看"},{"id":6,"functionName":"请假调班审批"},{"id":7,"functionName":"员工权限配置"},{"id":8,"functionName":"客服咨询查看"},{"id":9,"functionName":"报事报修查看"},{"id":10,"functionName":"广告配置"}];
+  return [{ "id": 1, "functionName": "合同签署" }, { "id": 2, "functionName": "商铺信息" }, { "id": 3, "functionName": "请假调休" }, { "id": 4, "functionName": "审批查询" }, { "id": 5, "functionName": "员工权限" }, { "id": 6, "functionName": "公告发布" }, { "id": 7, "functionName": "报修查看" }, { "id": 8, "functionName": "咨询查看" }, { "id": 9, "functionName": "登录查看" }];
 }
 module.exports = {
 	getAllPermission:getAllPermission

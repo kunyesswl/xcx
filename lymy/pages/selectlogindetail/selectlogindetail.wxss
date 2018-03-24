@@ -1,9 +1,3 @@
-.bright789_view_hide{ 
- display: none; 
-} 
-.bright789_view_show{ 
- display: block; 
-}
 .multiple-select{
 	padding: 20rpx;
 	display: flex;
@@ -28,4 +22,11 @@
 	background: #f7982a;
 	color: #fff;
 	border-color: #f7982a;
+}
+.btn_flex{
+	display:flex;
+}
+.btn-block_1_2{
+	width: 40%;
+	line-height: 88rpx;
 }

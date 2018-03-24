@@ -1,9 +1,15 @@
 var util = require('../../utils/util.js');
 Page({
   data: {
+    items: [
+      { name: '1', value: '显示' },
+      { name: '2', value: '隐藏', checked: 'true' },
+    ],
     checitems:[],
     // selected:null,
     selectedid: null,
+    showView: false,
+    uploadimgs: [], //上传图片列表
 	title:""
   },
   onLoad: function () {
@@ -15,46 +21,62 @@ Page({
         },
         {
           "id":2,
-          "text":"电路"
-        },
-        {
-          "id":3,
           "text":"空调"
         },
         {
-          "id":4,
-          "text":"消防"
-        },
-        {
-          "id":5,
+          "id":3,
           "text":"电梯"
         },
         {
-          "id":6,
+          "id":4,
           "text":"门"
         },
         {
-          "id":7,
-          "text":"下水道"
-        },
-        {
-          "id":8,
+          "id":5,
           "text":"墙面"
         },
         {
-          "id":9,
+          "id":6,
           "text":"窗户"
         },
         {
-          "id":10,
+          "id":7,
           "text":"天花板"
         },
         {
-          "id":11,
+          "id":8,
           "text":"其他"
         }
-      ]
+      ],
+      uploadimgs: []
     })
+  },
+  radioChange: function (e) {
+    var that = this;
+    that.setData({
+      showView: (!that.data.showView)
+    })
+  },
+  chooseImage: function () {
+    let _this = this;
+    util.chooseImage(function (res) {
+      _this.setData({
+        uploadimgs: _this.data.uploadimgs.concat(res.tempFilePaths)
+      });
+    });
+  },
+  editImage: function () {
+    this.setData({
+      editable: !this.data.editable
+    })
+  },
+  deleteImg: function (e) {
+    console.log(e.currentTarget.dataset.index);
+    const imgs = this.data.uploadimgs
+	imgs.splice(e.currentTarget.dataset.index,1)
+    this.setData({
+      uploadimgs:imgs
+    });
   },
   onSelectTag: function(e){
     const eid = e.currentTarget.dataset.id;
@@ -71,13 +93,7 @@ Page({
 	  var data = e.detail.value;
 	  var url = "https://www.kunyesswl.com/wxspl/func/submitRepair/";
 	  
-	  if(data.shopCode==""){
-		  util.msg("请输入商户号");
-		  return;
-	  }else if(data.mobile==""){
-		  util.msg("请输入手机号码");
-		  return;
-	  }else if(data.content==""){
+	  if(data.content==""){
 		  util.msg("请输入报修内容");
 		  return;
 	  }else if(data.title==""){

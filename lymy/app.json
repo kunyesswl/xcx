@@ -28,7 +28,9 @@
 	"pages/noticelist/noticelist",
 	"pages/noticedetail/noticedetail",
 	"pages/staffonly/staffonly","pages/shoplist/shoplist","pages/shopinfo/shopinfo",
-    "pages/myconferencelist/myconferencelist"
+    "pages/myconferencelist/myconferencelist",
+    "pages/selectlogindetail/selectlogindetail",
+    "pages/selectloginlist/selectloginlist"
   ],
   "window":{
     "backgroundTextStyle":"white",
@@ -39,12 +41,12 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "服务",
+      "text": "首页",
       "iconPath":"images/xihuan.png",
       "selectedIconPath":"images/xihuanfill.png"
     },  {
       "pagePath": "pages/my/my",
-      "text": "关于我们",
+      "text": "招商电话",
       "iconPath":"images/yonghu.png",
       "selectedIconPath":"images/yonghufill.png"
     }],

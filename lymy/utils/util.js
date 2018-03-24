@@ -4,13 +4,29 @@
 * 格式后的时间：yyyy/mm/dd hh:mm:ss
 **/
 const formatTime = (date) => {
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
   var day = date.getDate();
-  var hour = date.getHours();
-  var minute = date.getMinutes();
-  var second = date.getSeconds();
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  var month = date.getMonth() + 1;
+  if (day == 1) {
+    month = date.getMonth();
+    if (month == 2) {
+      day = 28;
+    } else if (month == 4) {
+      day = 30;
+    } else if (month == 6) {
+      day = 30;
+    } else if (month == 9) {
+      day = 30;
+    } else if (month == 11) {
+      day = 30;
+    } else {
+      day = 31;
+    }
+  } else {
+    month = date.getMonth() + 1;
+    day = date.getDate() - 1;
+  }
+  var year = date.getFullYear();
+  return [year, month, day].map(formatNumber).join('-');
 }
 
 const formatDate = (date) => {
@@ -330,10 +346,11 @@ const chooseImage = (_cb) =>{
       }
     });
 }
-const uploadFiles = (_url,_formData,_filePaths,_cb) =>{
-	_uploadFile(_url,_formData,_filePaths,{},_cb)
+const uploadFiles = (_url,_formData,_filePaths,_sb,_cb) =>{
+	sloading();
+	_uploadFile(_url,_formData,_filePaths,{},_sb,_cb)
 }
-const _uploadFile = (_url,_formData,_filePaths,_data,_cb) =>{
+const _uploadFile = (_url,_formData,_filePaths,_data,_sb,_cb) =>{
 	 var i=_data.i?_data.i:0;//当前上传的哪张图片
      var success=_data.success?_data.success:0;//上传成功的个数
      var fail=_data.fail?_data.fail:0;//上传失败的个数
@@ -344,6 +361,7 @@ const _uploadFile = (_url,_formData,_filePaths,_data,_cb) =>{
                     formData:_formData,
                     success: (resp) => {
                         success++;//图片上传成功，图片上传成功的变量+1
+						 typeof _sb == "function" && _sb(resp);
                     },
                     fail: (res) => {
                         fail++;//图片上传失败，图片上传失败的变量+1
@@ -353,6 +371,7 @@ const _uploadFile = (_url,_formData,_filePaths,_data,_cb) =>{
                         if(i == _filePaths.length)
                         {                      
                           console.log('总共'+success+'张上传成功,'+fail+'张上传失败！');
+						  hloading();
 						  typeof _cb == "function" && _cb({total:_filePaths.length,success:success,fail:fail});
                         }
                         else

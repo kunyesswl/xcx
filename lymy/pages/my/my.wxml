@@ -1,10 +1,10 @@
 <view class="container">
 	<view class="my-list">
 		<navigator class="my-item">
-    			<view style='margin-left: 100px;'><text>利远贸易有限公司</text></view>
+    			<view style='margin-left: 100px;'><text style='font-weight:bold;font-size:20px;'>利远贸易有限公司</text></view>
           		</navigator>
 		<navigator class="my-item">
-			<text>广场招商电话：</text>
+			<text style='font-weight:bold;font-size:20px;'>广场招商电话：</text>
 		</navigator>
     <navigator class="my-item">
 			<text>刘生：185-2061-1608</text>
@@ -13,7 +13,7 @@
 			<text>魏生：135-3346-1185</text>
 		</navigator>
 		<navigator class="my-item">
-			<text>分场招商电话：</text>
+			<text style='font-weight:bold;font-size:20px;'>分场招商电话：</text>
 		</navigator>
     <navigator class="my-item">
 			<text>宋生：180-0221-3688</text>
@@ -31,7 +31,7 @@
 			<text>传真：020-83592588</text>
 		</navigator>
     <navigator class="my-item">
-			<text>地址：</text>
+			<text style='font-weight:bold;font-size:20px;'>地址：</text>
 		</navigator>
     <navigator class="my-item">
       <text>广州市越秀区永福路45号大院自编A33号利远广场018</text>
@@ -39,5 +39,8 @@
     <navigator class="my-item">
       <text>广州市越秀区永福路45号大院自编A35号C栋利远分场718</text>
 		</navigator>
+    <view style='height:36px;'>
+		<button bindtap='employeeChannel' style='height:36px;font-size:20px;font-weight:bold;'>员  工  通  道</button>
+	</view>
 	</view>
 </view>

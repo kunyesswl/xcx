@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
-// var app = getApp();
+var app = getApp();
+var a = app.globalData.persiomsson;
 Page({
   data: {
     indexmenu:[],
@@ -20,38 +21,31 @@ Page({
   },
   fetchData:function(){
     this.setData({
-      indexmenu:[
+      indexmenu: [
         {
-          'icon':'./../../images/icon_01.png',
-          'text':'费用查询',
+          'icon': './../../images/icon_05.png',
+          'text': '通知公告',
+          'url': 'noticelist'
         },
         {
-          'icon':'./../../images/icon_03.png',
-          'text':'报事报修',
-		  'url':'property'
+          'icon': './../../images/icon_03.png',
+          'text': '报事报修',
+          'url': 'property'
         },
         {
-          'icon':'./../../images/icon_05.png',
-          'text':'通知公告',
-		  'url':'noticelist'
+          'icon': './../../images/icon_09.png',
+          'text': '投诉建议',
+          'url': 'question'
         },
-        
         {
-          'icon':'./../../images/icon_09.png',
-          'text':'投诉建议',
-		  'url':'question'
-        },
-       
-		{
-          'icon':'./../../images/icon_11.png',
-          'text':'员工通道',
-          'url':'staffonly'
+          'icon': './../../images/icon_01.png',
+          'text': '费用查询',
         }
       ],
       imgUrls: [
-        '../../images/banner_02.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-        'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+        '../../images/gg1.jpg',
+        '../../images/gg2.jpg',
+        '../../images/gg3.jpg'
       ]
     })
   },

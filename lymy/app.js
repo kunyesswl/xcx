@@ -6,7 +6,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-	this.getUserInfo();
+	  this.getUserInfo();
   },
   onShow: function(){
     //启动小程序或者从后台进入前台
@@ -21,35 +21,57 @@ App({
     }else{
       //调用登录接口
       wx.login({
-        success: function () {
+        success: function (req) {
+          var code = req.code;
           wx.getUserInfo({
             success: function (r1) {
 				console.log("user info : ");
 				console.log(r1);
 				 wx.request({  
-				  url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx58f70447cc29e783&secret=0afe36dace22f9cc42d2c6459765c30c&grant_type=authorization_code&js_code='+r1.code,  
+           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd6664994d418b5d5&secret=819e21505c50447d3a498f5bd71d09e4&js_code=' + code + '&grant_type=authorization_code',  
 				  header: {  
 					  'content-type': 'application/json'  
 				  },  
 				  success: function(res) {  
-					console.log(res.data.openid) //获取openid  
-					wx.request({  
+          that.globalData.openId = res.data.openid;
+					wx.request({
 					  url: "https://www.kunyesswl.com/wxspl/selectEmployeePower",  
 					  header: {'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
 					  data: {openid:res.data.openid},  
 					  method: 'POST',  
-					  success:function(r2) {  
-						console.log(r2)
-						 if(res.data.code=="0"){
-							  r1.userInfo.permissions = res.data.data;
+					  success:function(r2) {
+              wx.request({
+                url: "https://www.kunyesswl.com/wxspl/saveAccessUser",
+                header: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
+                data: { 
+                  openid: res.data.openid,
+                  headUrl: r1.userInfo.avatarUrl,
+                  nickName: r1.userInfo.nickName,
+                  mobile:""
+                 },
+                method: 'POST',
+                success: function (r3) {
+                },
+                fail: function (r3) {
+                }
+              });
+            if (r2.data.code=="0"){
+              if(!r2.data.data){
+                
+              }else{
+                that.globalData.persiomsson = r2.data.data;
+              }
+
+              
+                if (this.employIdCallback) {
+                  this.employIdCallback(employId);
+                }
 						  }else{
-							   r1.userInfo.permissions =[ {"id":1,"text":"合同签署","checked":0},{"id":2,"text":"请假","checked":0},{"id":3,"text":"调休","checked":0},{"id":4,"text":"商铺信息","checked":0},{"id":5,"text":"员工权限","checked":0}];
-							   r1.userInfo.openid="openid1239102412";
+							   
 						  }
 					  },  
 					  fail:function(r2){
-						  r1.userInfo.permissions =[ {"id":1,"text":"合同签署","checked":0},{"id":2,"text":"请假","checked":0},{"id":3,"text":"调休","checked":0},{"id":4,"text":"商铺信息","checked":0},{"id":5,"text":"员工权限","checked":0}];
-						  r1.userInfo.openid="openid1239102412";
+						  
 					  }
 					});  
 				  }  
@@ -65,6 +87,8 @@ App({
   },
   globalData:{
     //全局信息
-    userInfo:null
+    userInfo:null,
+    openId:null,
+    persiomsson: []
   }
 })

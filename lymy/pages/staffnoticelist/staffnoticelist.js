@@ -13,7 +13,7 @@ Page({
   onLoad: function () { //加载数据渲染页面
     this.fetchServiceData();
   },
-  fetchServiceData:function(){  //获取权限列表
+  fetchServiceData:function(){  //获取报修列表
     let _this = this;
     wx.showToast({
       title: '加载中',
@@ -27,47 +27,29 @@ Page({
     const newlist = [];
 	
 	 var data = {
-		 "placeType":this.data.pid,
-		 "type": this.data.aid,
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/selectEmployeeList",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=1",data,function(res){
 		console.log(res);
-		if(res.data.code=="0"){
-			var newlist = [];
-			var reslist = res.data.data;
+		if(res.data.code=="000"){
+			var newlst = [];
+			var reslist = res.data.list;
 			//var reslist = _this.testperlist();
 			if(reslist){
 				for (var i = 0; i < reslist.length; i++) {
-				 newlist.push({
+				 newlst.push({
 					 "id":reslist[i].id,
-					"mobile":reslist[i].mobile,
-					"userName":reslist[i].userName,
-					"openId":reslist[i].openId,
-					"createTime":reslist[i].createTime,
-					"imgurl":"../../../images/staff_01.png"
+					"title":reslist[i].title,
+					"creator":reslist[i].creator,
+					"createTime":reslist[i].createTime
 				})
 			 }
 			_this.setData({
-				perlist:_this.data.perlist.concat(newlist)
+				perlist:_this.data.perlist.concat(newlst)
 			})
 			}
 		}
 	});
-  },
-  testperlist:function(){
-	  var newlist = [];
-	  for (var i = 0; i < 50; i++) {
-				 newlist.push({
-					 "id":i,
-					"mobile":"13800138000",
-					"userName":"成渝动",
-					"openId":"openid190141233333",
-					"createTime":"2018-03-01",
-					"imgurl":"../../../images/staff_01.png"
-				})
-	  }
-	  return newlist;
   },
   inputSearch:function(e){  //输入搜索文字
     this.setData({
@@ -84,11 +66,6 @@ Page({
   scrollHandle:function(e){ //滚动事件
     this.setData({
       scrolltop:e.detail.scrollTop
-    })
-  },
-  newpermission:function(e){
-	wx.navigateTo({
-      url: '../permissiondetail/permissiondetail'
     })
   },
   goToTop:function(){ //回到顶部

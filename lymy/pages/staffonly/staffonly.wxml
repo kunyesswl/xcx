@@ -17,5 +17,6 @@
 			<text>{{item.text}}</text>
 		</navigator>
 	</view>
+  <view> <button bindtap='lookId'>查看小程序ID</button></view>
 	</view>
 </view>

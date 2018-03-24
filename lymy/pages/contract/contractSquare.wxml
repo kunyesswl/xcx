@@ -236,8 +236,9 @@
 			<view class="input-list">
 				<view class="input-item">
 					<text class="input-item-label_c000">履约保证金</text>
-					<view class="input-item-content">
-						<input type="digit" name="deposit" placeholder="履约保证金多少元" value="{{p.toFix(leaseArea*(chargePerMonthPerSq+rentalPerMonth1)*2)}}"></input>
+					<view class="input-item-content" style="display:flex;">
+						<input type="digit" name="deposit" placeholder="履约保证金多少元" value="{{p.toFix(deposit)}}"></input>
+            <button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="9">清除</button>
 					</view>
 				</view>
 			</view>

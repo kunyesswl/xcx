@@ -81,17 +81,10 @@ Page({
   deleteImg:function(e){
     console.log(e.currentTarget.dataset.index);
     const imgs = this.data.uploadimgs
-    // Array.prototype.remove = function(i){
-    //   const l = this.length;
-    //   if(l==1){
-    //     return []
-    //   }else if(i>1){
-    //     return [].concat(this.splice(0,i),this.splice(i+1,l-1))
-    //   }
-    // }
+	imgs.splice(e.currentTarget.dataset.index,1)
     this.setData({
-      uploadimgs: imgs.remove(e.currentTarget.dataset.index)
-    })
+      uploadimgs:imgs
+    });
   },
   questionSubmit:function(){
 

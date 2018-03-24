@@ -112,7 +112,7 @@
 				<view class="input-item">
 					<text class="input-item-label_c000">第一年合计</text>
 					<view class="input-item-content">
-						<input type="digit" name="rentalPerMonth1" placeholder="首年月租金合计多少元" value="{{p.toFix(rentalPerMonth1)}}" bindblur="bindInputChange" id="rentalPerMonth1"></input>
+						<input type="digit" name="rentalPerMonth1" placeholder="月租金合计多少元" value="{{p.toFix(rentalPerMonth1)}}" bindblur="bindInputChange" id="rentalAmonth"></input>
 					</view>
 				</view>
 				<view class="input-item">
@@ -186,7 +186,7 @@
 					<text class="input-item-label_c000">第五年</text>
 					<view class="input-item-content" style="display:flex;">
 						<input type="digit" name="chargePerMonthY5" placeholder="每月多少元" value="{{p.toFix(chargePerMonthY5)}}"></input>
-						<button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="8">清除</button>
+						<button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="9">清除</button>
 					</view>
 				</view>
 			</view>
@@ -221,12 +221,14 @@
 			</view>
 		</view>
 		<view class="group-header">履约保证金及租金的支付方式和期限</view>
+    
 		<view class="group-body">
 			<view class="input-list">
 				<view class="input-item">
-					<text class="input-item-label_c000" style='width:200px;'>履约保证金</text>
-					<view class="input-item-content">
-						<input type="digit" name="deposit" placeholder="履约保证金多少元" value="{{p.toFix(leaseArea*(chargePerMonthPerSq+rentalPerMonth1)*2)}}"></input>
+					<text class="input-item-label_c000">履约保证金</text>
+					<view class="input-item-content"  style="display:flex;">
+						<input type="digit" name="deposit" placeholder="履约保证金多少元" value="{{p.toFix(deposit)}}"></input>
+            <button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="9">清除</button>
 					</view>
 				</view>
 			</view>

@@ -42,7 +42,7 @@ Page({
 		{
           'icon':'./../../images/icon_27.png',
           'text':'公告发布',
-		  'url':'admnoticelist'
+		  'url':'permissionlist'
         },
 		{
           'icon':'./../../images/icon_27.png',
@@ -59,5 +59,30 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.shopdetail.name
     })
-  }
+  },
+
+lookId:function(){
+  wx.showModal({
+    title: '小程序ID',
+    content: app.globalData.openId,
+    confirmText:'复制',
+    success: function (res) {
+      if (res.confirm) {
+        console.log('用户点击确定')
+        wx.setClipboardData({
+          data: app.globalData.openId,
+          success: function (res) {
+            wx.showToast({
+              title: '成功',
+              icon: 'succes',
+              duration: 1000,
+              mask: true
+            })
+          }
+        });
+      }
+    }
+  })
+}
+
 })

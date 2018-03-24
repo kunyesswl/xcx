@@ -26,8 +26,9 @@ Page({
 	 if(this.data.id){
 		_this.getEmployeePermission(_this.data.id,function(pres){
 			var lstr  = "_";
-			for(var i=0;i<pres.functionList.length;i++){
-				lstr += pres.functionList[i].id+"_";
+      var functionList = pres[0].functionList[0];
+      for (var i = 0; i < functionList.length;i++){
+        lstr += functionList[i].id+"_";
 			}
 			for(var i=0;i<allPers.length;i++){
 				var _ele = allPers[i];
@@ -36,9 +37,10 @@ Page({
 				}
 			}
 			_this.setData({
-				openid:pres.openid,
-				userName:pres.userName,
-				mobile:pres.mobile,
+        id: _this.data.id,
+				openid:pres[0].openId,
+				userName:pres[0].userName,
+				mobile:pres[0].mobile,
 				peritems:allPers
 			}) 
 		});
@@ -54,10 +56,10 @@ Page({
   getEmployeePermission: function(_id,_cb){ //获取员工权限
 	  util.httppost("https://www.kunyesswl.com/wxspl/selectEmployeeById",{id:_id},function(res){
 		  console.log(res);
-		 /*if(res.data.code=="0"){ 
+		 if(res.data.code=="0"){ 
 				_cb(res.data.data)
-			}*/
-			_cb({"openid":"wx003mm321113Ajr32","userName":"李浚赫","mobile":"13800138000","functionList":[{"id":1,"functionName":"合同签署"},{"id":2,"functionName":"商铺信息"}]});//测试数据
+			}
+			
 		});
   },
   onSelectTag: function(e){
@@ -92,9 +94,19 @@ Page({
   },
   formSubmit:function(e){
 	  var _this = this;
+    var a = this.data.peritems;
+    var functionList = [];
+    var j=0;
+    for (var i = 0; i < a.length; i++){
+      if(a[i].checked == 1){
+        functionList[j] = a[i].id;
+        j = j+1;
+      }
+    }
 	  var data = e.detail.value;
+    data.functionList = functionList;
 	  var url ;
-	  if(_this.data.id){
+	  if(!_this.data.id){
 		  url = "https://www.kunyesswl.com/wxspl/saveEmployee";
 	  }else{
 		  url = "https://www.kunyesswl.com/wxspl/updateEmployee"

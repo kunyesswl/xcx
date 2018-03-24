@@ -4,8 +4,8 @@ Page({
   data: {
 	ctobj:{"1":"利远广场合同","2":"利远分场合同","3":"补充协议"},
 	contractType:0,
-	startDate:"2018-01-01",
-	endDate:"2018-01-01",
+  startDate: util.formatDate(new Date()),
+  endDate: util.formatTime(new Date()),
 	shopNo:"",	//铺位号
 	shoparea:"", //面积
 	rentalPer:"",
@@ -19,16 +19,17 @@ Page({
 	scopeindex:0,
 	leasearry:["请选择租凭期年数","一","二","三","四","五","六","七","八","九","十"],
 	leaseindex:0,
-	rentalPerMonth1:0,
-	rentalPerMonth2:0,
-	rentalPerMonth3:0,
-	rentalPerMonth4:0,
-	rentalPerMonth5:0,
-	chargePerMonthY1:0,
-	chargePerMonthY2:0,
-	chargePerMonthY3:0,
-	chargePerMonthY4:0,
-	chargePerMonthY5:0
+	rentalPerMonth1:"",
+	rentalPerMonth2:"",
+	rentalPerMonth3:"",
+	rentalPerMonth4:"",
+	rentalPerMonth5:"",
+	chargePerMonthY1:"",
+	chargePerMonthY2:"",
+	chargePerMonthY3:"",
+	chargePerMonthY4:"",
+	chargePerMonthY5:"",
+	deposit:0
   },
   onLoad: function (option) {
 	this.validate = new verify.WxValidate(
@@ -87,7 +88,7 @@ Page({
 		date.setFullYear(date.getFullYear()+parseInt(this.data.leaseindex))
 		this.setData({
 			startDate:e.detail.value,
-			endDate:util.formatDate(date)
+      endDate: util.formatTime(date)
 		});
 		break;
       case '2':
@@ -172,7 +173,7 @@ Page({
 		date.setFullYear(date.getFullYear()+parseInt(e.detail.value))
 		this.setData({
 			leaseindex:e.detail.value,
-			endDate:util.formatDate(date)
+			endDate:util.formatTime(date)
 		});
 	  break;
 	   }
@@ -221,6 +222,11 @@ Page({
 			chargePerMonthY5:""
 		});
 		break;
+    case '9':
+      this.setData({
+        deposit: ""
+      });
+      break;
 	}
   },
   countYAS:function(_t,_v0,_this){
@@ -240,6 +246,9 @@ Page({
 			  chargePerMonthY4:v0*1.05*1.05*1.05,
 			  chargePerMonthY5:v0*1.05*1.05*1.05*1.05});
 	  }
+	  _this.setData({
+		  deposit:(_this.data.rentalPerMonth1+_this.data.chargePerMonthY1)*2
+	  });
 	  
   },
   formSubmit:function(e){
@@ -279,5 +288,6 @@ Page({
 	 //util.download(pdfurl);
 	// util.viewdoc(pdfurl,"pdf");
 	
+  
   }
 })
