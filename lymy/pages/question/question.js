@@ -1,6 +1,10 @@
 var util = require('../../utils/util.js');
 Page({
   data: {
+    items: [
+      { name: '1', value: '显示' },
+      { name: '2', value: '隐藏', checked: 'true' },
+    ],
     showtab:0,  //顶部选项卡索引
     showtabtype:'', //选中类型
     showfootertab:0,  //底部标签页索引
@@ -9,9 +13,10 @@ Page({
     questions:[], //问题列表
     showquestionindex:null, //查看问题索引,
     uploadimgs:[], //上传图片列表
-    editable: false //是否可编辑
+    editable: false, //是否可编辑
+    showView: false
   },
-  onLoad: function () {
+  onLoad: function () { 
     this.setData({
       tabnav:{
         tabnum:5,
@@ -47,6 +52,19 @@ Page({
     })
     this.fetchQuestions();
   },
+  radioChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    var that = this;
+    that.setData({
+      showView: (!that.data.showView)
+    })
+  },
+  onChangeShowState: function () {
+    var that = this;
+    that.setData({
+      showView: (!that.data.showView)
+    })
+  }, 
   chooseImage:function() {
 	let _this = this;
     util.chooseImage(function(res){
@@ -128,8 +146,26 @@ Page({
   },
   formSubmit: function(e){ //表单提交
 	  var _this = this;
+	  console.log("form submit ");
 	  var data = e.detail.value; //表单里面的数据，以name 为key ,value w为值
-	  //util.uploadFiles(url,data,uploadimgs,function(r){}); //上传图片同时提交表单信息 function(r) 为回调函数
+	  var imageid=""
+	  util.uploadFiles("https://www.kunyesswl.com/wxspl/func/uploadPhone/",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
+		  console.log("success ");
+		  console.log(sr);
+		  //imageid+=sr.data
+	  },function(r){
+		  console.log(r)
+		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitComplaints/",data,function(res){
+			console.log(res);
+		  if(res.data.code=="000"){
+			  util.msg("提交成功","success",function(){
+				  
+			  });
+		  }else{
+			  util.msg("提交失败");
+		  }
+		  });
+	  }); //上传图片同时提交表单信息 function(r) 为回调函数
 	  
   }
 })
