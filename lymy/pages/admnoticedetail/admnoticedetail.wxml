@@ -29,6 +29,12 @@
 							<picker id="isAbout" bindchange="bindSelect" name="isAbout" value="{{isAboutIndex}}" range="{{isAboutArray}}" mode="selector">{{isAboutArray[isAboutIndex]}}</picker>
 						</view>
 					</view>
+					<view class="input-item">
+						<text class="input-item-label">发布人</text>
+						<view class="input-item-content">
+							<input type="text" placeholder="请输入发布人" name="creator" value="{{creator}}"></input>
+						</view>
+					</view>
 				</view>
 			</view>
 		</view>
