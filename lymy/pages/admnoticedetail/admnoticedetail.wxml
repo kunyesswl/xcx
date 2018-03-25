@@ -12,8 +12,24 @@
 							<input type="text" auto-focus placeholder="标题" name="title" value="{{title}}"></input>
 						</view>
 					</view>
+				
+				<!-- <textarea placeholder="请输入公告信息，最多可以输入1000字" maxlength="1000" name="content" value="{{content}}"></textarea> -->
+					<view class="input-item">
+					<view class="img-upload">
+						<view class="img-add" bindtap="chooseImage" style='border-style:solid;border-width:2px;'></view>
+						<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+							<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
+							<image src="{{item}}" mode="aspectFill"></image>
+						</view>
+					</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">公告类型</text>
+						<view class="input-item-content">
+							<picker id="isAbout" bindchange="bindSelect" name="isAbout" value="{{isAboutIndex}}" range="{{isAboutArray}}" mode="selector">{{isAboutArray[isAboutIndex]}}</picker>
+						</view>
+					</view>
 				</view>
-				<textarea placeholder="请输入公告信息，最多可以输入1000字" maxlength="1000" name="content" value="{{content}}"></textarea>
 			</view>
 		</view>
 	<view class="btn-submit btn_flex">

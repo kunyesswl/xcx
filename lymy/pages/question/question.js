@@ -142,7 +142,7 @@ Page({
 	  console.log("form submit ");
 	  var data = e.detail.value; //表单里面的数据，以name 为key ,value w为值
 	  var imageid=""
-	  util.uploadFiles("https://www.kunyesswl.com/wxspl/func/uploadPhone/",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
+	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
 		  console.log("success ");
 		  console.log(sr);
 		  //imageid+=sr.data

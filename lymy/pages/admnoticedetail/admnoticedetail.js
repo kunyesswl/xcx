@@ -3,7 +3,10 @@ Page({
   data: {
 	  id:"",
 	  title:"",
-	  content:""
+	  uploadimgs:[], //上传图片列表
+	  content:"",
+	  isAboutIndex:0,
+	  isAboutArray:["内部公告","外部公告"]
   },
   onLoad: function (option) {
 	this.setData({
@@ -21,7 +24,9 @@ Page({
 			  _this.setData({
 				id:_data.id,
 				title:_data.title,
-				content:_data.content
+				content:_data.content,
+				isAboutIndex: isNaN(_data.isAbout)?0:parseInt(_data.isAbout),
+				uploadimgs:_data.imgUrls.split(",")
 			}) 
 		  }
 	  });	
@@ -45,6 +50,27 @@ Page({
 		  }
 	  });
 	  });
+  },
+  bindSelect: function(e) {
+	  this.setData({
+		  isAboutIndex:e.detail.value
+	  });
+  },
+  chooseImage:function() {
+	let _this = this;
+    util.chooseImage(function(res){
+		_this.setData({
+			uploadimgs: _this.data.uploadimgs.concat(res.tempFilePaths)
+		});
+	});
+  },
+  deleteImg:function(e){
+    console.log(e.currentTarget.dataset.index);
+    const imgs = this.data.uploadimgs
+	imgs.splice(e.currentTarget.dataset.index,1)
+    this.setData({
+      uploadimgs:imgs
+    });
   },
   formSubmit:function(e){
 	  var _this = this;

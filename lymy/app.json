@@ -27,6 +27,7 @@
 	"pages/admnoticedetail/admnoticedetail",
 	"pages/noticelist/noticelist",
 	"pages/noticedetail/noticedetail",
+	"pages/staffnoticelist/staffnoticelist",
 	"pages/staffonly/staffonly","pages/shoplist/shoplist","pages/shopinfo/shopinfo",
     "pages/myconferencelist/myconferencelist",
     "pages/selectlogindetail/selectlogindetail",

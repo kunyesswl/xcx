@@ -13,7 +13,6 @@
 					<text class="service-city">{{item.title}}</text>
 				</view>
 				<view class="service-text">
-					<view class="service-tite">{{item.userName}}</view>
 					<view><text class="service-city">商铺号：{{item.shopCode}}</text></view>
 					<view><text class="service-city">报修时间：{{item.createTime}}</text></view>
 				</view>

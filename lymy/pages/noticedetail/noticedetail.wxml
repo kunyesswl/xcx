@@ -18,6 +18,9 @@
 							<text class="ctn">{{content}}</text>
 						</view>
 					</view>
+				<view class="conference-item-img" wx:for="{{imgs}}" wx:for-item="item">
+					<image src="{{item}}" mode="aspectFill"></image>
+				</view>
 				</view>
 			</view>
 		</view>

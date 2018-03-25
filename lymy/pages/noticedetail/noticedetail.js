@@ -3,7 +3,8 @@ Page({
   data: {
 	  id:"",
 	  title:"",
-	  content:""
+	  content:"",
+	  imgs:[]
   },
   onLoad: function (option) {
 	this.setData({
@@ -21,7 +22,8 @@ Page({
 			  _this.setData({
 				id:_data.id,
 				title:_data.title,
-				content:_data.content
+				content:_data.content,
+				imgs:_data.imgUrls.split(",")
 			}) 
 		  }
 	  });	

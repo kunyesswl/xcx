@@ -29,7 +29,7 @@ Page({
 	 var data = {
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=1",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=0",data,function(res){
 		console.log(res);
 		if(res.data.code=="000"){
 			var newlst = [];

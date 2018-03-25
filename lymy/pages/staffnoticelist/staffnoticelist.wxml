@@ -13,7 +13,6 @@
 					<text class="service-city">{{item.title}}</text>
 				</view>
 				<view class="service-text">
-					<view class="service-tite">{{item.userName}}</view>
 					<view><text class="service-city">发布人：{{item.creator}}</text></view>
 					<view><text class="service-city">发布时间：{{item.createTime}}</text></view>
 				</view>
