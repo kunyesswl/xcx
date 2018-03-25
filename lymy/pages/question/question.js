@@ -139,15 +139,21 @@ Page({
   },
   formSubmit: function(e){ //表单提交
 	  var _this = this;
-	  console.log("form submit ");
 	  var data = e.detail.value; //表单里面的数据，以name 为key ,value w为值
 	  var imageid=""
 	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
 		  console.log("success ");
 		  console.log(sr);
-		  //imageid+=sr.data
+		  var _srdata = sr.data
+		  if(_srdata.code=="000"){
+			  imageid+=sr.data.id+","
+		  }
 	  },function(r){
 		  console.log(r)
+		  if(imageid.length>0){
+			  imageid = imageid.substr(0,imageid.length-1);
+		  }
+		  data.phones =imageid;
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitComplaints/",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
@@ -159,6 +165,5 @@ Page({
 		  }
 		  });
 	  }); //上传图片同时提交表单信息 function(r) 为回调函数
-	  
   }
 })

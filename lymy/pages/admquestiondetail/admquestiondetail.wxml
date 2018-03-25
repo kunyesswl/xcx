@@ -27,6 +27,12 @@
 		<view class="group-body">
 			<view class="input-list">
 				<view class="input-item">
+					<text class="input-item-label">商户号</text>
+					<view class="input-item-content">
+						<text>{{shopcode}}</text>
+					</view>
+				</view>
+				<view class="input-item">
 					<text class="input-item-label">联系人</text>
 					<view class="input-item-content">
 						<text>{{contactor}}</text>

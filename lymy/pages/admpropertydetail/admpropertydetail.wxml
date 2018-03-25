@@ -17,6 +17,26 @@
 				</view>
 			</view>
 		</view>
+		
+		<view class="group-header"></view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">故障位置</text>
+					<view class="input-item-content">
+						<text>{{description}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="group-header">上传图片</view>
+		<view class="group-body">
+			<view class="conference-item-img" wx:for="{{imgs}}" wx:for-item="item">
+					<image src="{{item}}" mode="aspectFill"></image>
+			</view>
+		</view>
+		
 		<view class="group-header">联系信息</view>
 		<view class="group-body">
 			<view class="input-list">
@@ -24,6 +44,12 @@
 					<text class="input-item-label">商户号</text>
 					<view class="input-item-content">
 						<text>{{shopcode}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系人</text>
+					<view class="input-item-content">
+						<text>{{username}}</text>
 					</view>
 				</view>
 				<view class="input-item">

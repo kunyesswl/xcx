@@ -25,13 +25,15 @@ App({
           var code = req.code;
           wx.getUserInfo({
             success: function (r1) {
+				console.log("user info : ");
+				console.log(r1);
 				 wx.request({  
-           url: 'https://www.kunyesswl.com/wxspl/getOpenId', 
-           header: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
-           data: { code: code, encryptedData:r1.encryptedData,iv:r1.iv },
-           method: 'POST',
+           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd6664994d418b5d5&secret=819e21505c50447d3a498f5bd71d09e4&js_code=' + code + '&grant_type=authorization_code',  
+				  header: {  
+					  'content-type': 'application/json'  
+				  },  
 				  success: function(res) {  
-          that.globalData.openId = res.data.openId;
+          that.globalData.openId = res.data.openid;
 					wx.request({
 					  url: "https://www.kunyesswl.com/wxspl/selectEmployeePower",  
 					  header: {'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
@@ -61,7 +63,9 @@ App({
               }
 
               
-
+                if (this.employIdCallback) {
+                  this.employIdCallback(employId);
+                }
 						  }else{
 							   
 						  }

@@ -5,6 +5,7 @@ Page({
 	  title:"",
 	  content:"",
 	  contactor:"",
+	  shopcode:"",
 	  imgs:[],
 	  mobile:""
   },
@@ -27,7 +28,8 @@ Page({
 				title:detail.title,
 				content:detail.content,
 				contactor:detail.contactor,
-				imgs:["http://pic.58pic.com/58pic/12/34/51/85d58PICkjf.jpg","http://pic.58pic.com/58pic/12/34/51/85d58PICkjf.jpg"],
+				imgs:detail.imgUrls.split(","),
+				shopcode:detail.shopCode,
 				mobile:detail.mobile
 			});
 		}

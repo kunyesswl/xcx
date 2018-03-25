@@ -6,6 +6,8 @@ Page({
 	  title:"",
 	  content:"",
 	  shopcode:"",
+	  username:"",
+	  imgs:[],
 	  mobile:""
   },
   onLoad: function (option) {
@@ -26,6 +28,8 @@ Page({
 				title:detail.title,
 				content:detail.content,
 				shopcode:detail.shopCode,
+				imgs:detail.imgUrls.split(","),
+				username:detail.username,
 				mobile:detail.mobile
 			});
 		   }

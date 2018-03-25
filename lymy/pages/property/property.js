@@ -90,24 +90,38 @@ Page({
     console.log(this.data.selectedid);
   },formSubmit:function(e){
 	  var _this = this;
-	  var data = e.detail.value;
-	  var url = "https://www.kunyesswl.com/wxspl/func/submitRepair/";
-	  
-	  if(data.content==""){
+	  var data = e.detail.value; //表单里面的数据，以name 为key ,value w为值
+	   if(data.content==""){
 		  util.msg("请输入报修内容");
 		  return;
 	  }else if(data.title==""){
 		  util.msg("请选择报修事项");
 		  return;
 	  }
-	  util.httppost(url,data,function(res){
-		  console.log(res);
-		  if(res.data.code=="0"){
-			  util.msg("提交成功");
+	  var imageid=""
+	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
+		  console.log("success ");
+		  console.log(sr);
+		  var _srdata = sr.data
+		  if(_srdata.code=="000"){
+			  imageid+=sr.data.id+","
+		  }
+	  },function(r){
+		  console.log(r)
+		  if(imageid.length>0){
+			  imageid = imageid.substr(0,imageid.length-1);
+		  }
+		  data.phones =imageid;
+		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitRepair/",data,function(res){
+			console.log(res);
+		  if(res.data.code=="000"){
+			  util.msg("提交成功","success",function(){
+				  
+			  });
 		  }else{
 			  util.msg("提交失败");
 		  }
-	  });
-	  console.log(data);
+		  });
+	  }); //上传图片同时提交表单信息 function(r) 为回调函数
   }
 })

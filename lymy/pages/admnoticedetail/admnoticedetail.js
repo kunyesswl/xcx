@@ -82,18 +82,30 @@ Page({
 		  util.msg("请输入公告内容");
 		  return;
 	  }
-	  util.httppost("https://www.kunyesswl.com/wxspl/func/sendNotice/",data,function(res){
-		  console.log(res);
+	  var imageid=""
+	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
+		  console.log("success ");
+		  console.log(sr);
+		  var _srdata = sr.data
+		  if(_srdata.code=="000"){
+			  imageid+=sr.data.id+","
+		  }
+	  },function(r){
+		  console.log(r)
+		  if(imageid.length>0){
+			  imageid = imageid.substr(0,imageid.length-1);
+		  }
+		  data.phones =imageid;
+		  util.httppost("https://www.kunyesswl.com/wxspl/func/sendNotice/",data,function(res){
+			console.log(res);
 		  if(res.data.code=="000"){
 			  util.msg("提交成功","success",function(){
-				   wx.navigateTo({
-				  url: '../admnoticelist/admnoticelist'
-				});
+				  
 			  });
 		  }else{
 			  util.msg("提交失败");
 		  }
-	  });
-	  console.log(data);
+		  });
+	  }); //上传图片同时提交表单信息 function(r) 为回调函数
   }
 })

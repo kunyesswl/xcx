@@ -15,35 +15,54 @@
 		<view class="group-body">
 			<textarea name="content" placeholder="请输入您的详细问题，我们将尽快解决"></textarea>
 		</view>
-    <view class="group-header">上传图片</view>
-			<view class="group-body">
-				<view class="img-upload">
-					<view class="img-add" bindtap="chooseImage" style='border-style:solid;border-width:2px;'></view>
-					<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
-						<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
-						<image src="{{item}}" mode="aspectFill"></image>
+		
+		<view class="group-header"></view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">故障位置</text>
+					<view class="input-item-content">
+						<input type="text" name="description" placeholder="请输入故障位置"></input>
 					</view>
 				</view>
 			</view>
-    <view class="group-header">是否匿名</view>
+		</view>
+		
+		<view class="group-header">上传图片</view>
+		<view class="group-body">
+			<view class="img-upload">
+				<view class="img-add" bindtap="chooseImage" style='border-style:solid;border-width:2px;'></view>
+				<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+					<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
+					<image src="{{item}}" mode="aspectFill"></image>
+				</view>
+			</view>
+		</view>
+		<view class="group-header">是否匿名</view>
 			<view class="group-body">
 				<view class="input-list">
-        <view class="input-item">
+					<view class="input-item">
 						<radio-group class="radio-group" bindchange="radioChange">
- <label class="radio" wx:for-items="{{items}}">
- <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
- </label>
-</radio-group>
-					</view>
+							 <label class="radio" wx:for-items="{{items}}">
+							 <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+							 </label>
+						</radio-group>
 					</view>
 				</view>
-		<view class="group-header {{showView?'bright789_view_show':'bright789_view_hide'}}">联系信息</view>
+			</view>
+		<view class="group-header" wx:if="{{showView}}">联系信息</view>
 		<view class="group-body">
-			<view class="input-list {{showView?'bright789_view_show':'bright789_view_hide'}}">
+			<view class="input-list" wx:if="{{showView}}">
 				<view class="input-item">
 					<text class="input-item-label">商户号</text>
 					<view class="input-item-content">
-						<input type="text" name="shopcode" placeholder="请输入商户号"></input>
+						<input type="text" name="shopCode" placeholder="请输入商户号"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系人</text>
+					<view class="input-item-content">
+						<input type="text" name="username" placeholder="请输入联系人"></input>
 					</view>
 				</view>
 				<view class="input-item">
