@@ -10,8 +10,11 @@
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="service-list">
 			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admnoticedetail/admnoticedetail?id={{item.id}}">
-				<view class="service-left">
-					<text class="service-city">{{item.title}}</text>
+				<view class="service-text">
+					<view class="service-left">
+						<text class="service-city">{{item.title}}</text>
+					</view>
+					<view><text class="service-city">{{item.ntype}}</text></view>
 				</view>
 				<view class="service-text">
 					<view><text class="service-city">发布人：{{item.creator}}</text></view>

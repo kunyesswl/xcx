@@ -144,9 +144,9 @@ Page({
 	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
 		  console.log("success ");
 		  console.log(sr);
-		  var _srdata = sr.data
+		  var _srdata = util.str2json(sr.data)
 		  if(_srdata.code=="000"){
-			  imageid+=sr.data.id+","
+			  imageid+=_srdata.id+","
 		  }
 	  },function(r){
 		  console.log(r)

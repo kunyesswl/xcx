@@ -26,7 +26,7 @@ Page({
 				title:_data.title,
 				content:_data.content,
 				isAboutIndex: isNaN(_data.isAbout)?0:parseInt(_data.isAbout),
-				uploadimgs:_data.imgUrls.split(",")
+				uploadimgs:_data.imgUrls
 			}) 
 		  }
 	  });	
@@ -78,17 +78,17 @@ Page({
 	  if(data.title==""){
 		  util.msg("请输入标题");
 		  return;
-	  }else if(data.content==""){
-		  util.msg("请输入公告内容");
+	  }else if(_this.data.uploadimgs.length<1){
+		  util.msg("请上传公告图片");
 		  return;
 	  }
 	  var imageid=""
 	  util.uploadFiles("https://www.kunyesswl.com/wxspl/uploadPhone.do",{imgFile:_this.data.uploadimgs[0]},_this.data.uploadimgs,function(sr){
 		  console.log("success ");
 		  console.log(sr);
-		  var _srdata = sr.data
+		  var _srdata = util.str2json(sr.data)
 		  if(_srdata.code=="000"){
-			  imageid+=sr.data.id+","
+			  imageid+=_srdata.id+","
 		  }
 	  },function(r){
 		  console.log(r)

@@ -23,7 +23,7 @@ Page({
 				id:_data.id,
 				title:_data.title,
 				content:_data.content,
-				imgs:_data.imgUrls.split(",")
+				imgs:_data.imgUrls
 			}) 
 		  }
 	  });	

@@ -323,6 +323,13 @@ function json2str(json) {
 	return str.join("&");
 }
 
+const str2json = (str) =>{
+	if(typeof str!= 'object'){
+	  str= str.replace(/\ufeff/g,"");//重点
+	  return JSON.parse(str);
+    }
+}
+
 const chooseImage = (_cb) =>{
 	wx.showActionSheet({
       itemList: ['从相册中选择', '拍照'],
@@ -379,7 +386,7 @@ const _uploadFile = (_url,_formData,_filePaths,_data,_sb,_cb) =>{
 						  _data.i=i;
 						  _data.success=success;
 						  _data.fail=fail;
-                          this._uploadFile(_formData,_filePaths,i,_cb);
+                          _uploadFile(_url,_formData,_filePaths,_data,_sb,_cb);
                         }
                     },
                 });
@@ -403,6 +410,7 @@ module.exports = {
   download:download,
   viewdoc:viewdoc,
   json2str:json2str,
+  str2json:str2json,
   chooseImage:chooseImage,
   uploadFiles:uploadFiles
 }

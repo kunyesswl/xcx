@@ -8,6 +8,7 @@ Page({
     showfilterindex:null, //显示哪个筛选类目
     perlist:[], //员工权限列表
     scrolltop:null, //滚动位置
+	ntype:{"0":"内部公告","1":"外部公告"},
     page: 0  //分页
   },
   onLoad: function () { //加载数据渲染页面
@@ -29,7 +30,7 @@ Page({
 	 var data = {
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=1",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=",data,function(res){
 		console.log(res);
 		if(res.data.code=="000"){
 			var newlst = [];
@@ -40,6 +41,7 @@ Page({
 				 newlst.push({
 					 "id":reslist[i].id,
 					"title":reslist[i].title,
+					"ntype":_this.data.ntype[reslist[i].isAbout],
 					"creator":reslist[i].creator,
 					"createTime":reslist[i].createTime
 				})

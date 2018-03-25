@@ -7,6 +7,7 @@ Page({
 	  content:"",
 	  shopcode:"",
 	  username:"",
+	  description:"",
 	  imgs:[],
 	  mobile:""
   },
@@ -28,8 +29,9 @@ Page({
 				title:detail.title,
 				content:detail.content,
 				shopcode:detail.shopCode,
-				imgs:detail.imgUrls.split(","),
+				imgs:detail.imgUrls,
 				username:detail.username,
+				description:detail.rDescription,
 				mobile:detail.mobile
 			});
 		   }

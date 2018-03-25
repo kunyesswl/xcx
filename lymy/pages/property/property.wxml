@@ -56,19 +56,19 @@
 				<view class="input-item">
 					<text class="input-item-label">商户号</text>
 					<view class="input-item-content">
-						<input type="text" name="shopCode" placeholder="请输入商户号"></input>
+						<input type="text" name="shopCode" placeholder="请输入商户号" value=""></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label">联系人</text>
 					<view class="input-item-content">
-						<input type="text" name="username" placeholder="请输入联系人"></input>
+						<input type="text" name="username" placeholder="请输入联系人" value=""></input>
 					</view>
 				</view>
 				<view class="input-item">
 					<text class="input-item-label">联系电话</text>
 					<view class="input-item-content">
-						<input type="text" name="mobile" placeholder="请输入联系电话" ></input>
+						<input type="text" name="mobile" placeholder="请输入联系电话" value=""></input>
 					</view>
 				</view>
 			</view>

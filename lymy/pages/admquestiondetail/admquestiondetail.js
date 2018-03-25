@@ -28,7 +28,7 @@ Page({
 				title:detail.title,
 				content:detail.content,
 				contactor:detail.contactor,
-				imgs:detail.imgUrls.split(","),
+				imgs:detail.imgUrls,
 				shopcode:detail.shopCode,
 				mobile:detail.mobile
 			});
