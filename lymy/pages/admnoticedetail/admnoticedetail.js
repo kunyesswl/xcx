@@ -6,6 +6,7 @@ Page({
 	  uploadimgs:[], //上传图片列表
 	  content:"",
 	  creator:"",
+	  createTime:"",
 	  isAboutIndex:0,
 	  isAboutArray:["内部公告","外部公告"]
   },
@@ -27,6 +28,7 @@ Page({
 				title:_data.title,
 				content:_data.content,
 				creator:_data.creator,
+				createTime:_data.createTime,
 				isAboutIndex: isNaN(_data.isAbout)?0:parseInt(_data.isAbout),
 				uploadimgs:_data.imgUrls
 			}) 
