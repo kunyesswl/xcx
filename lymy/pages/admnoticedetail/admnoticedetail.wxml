@@ -16,7 +16,7 @@
 					<textarea placeholder="请输入公告信息，最多可以输入1000字" maxlength="1000" hidden="true" name="content" value="{{content}}"></textarea>
 					<view class="input-item">
 					<view class="img-upload">
-						<view class="img-add" bindtap="chooseImage" style='border-style:solid;border-width:2px;'></view>
+						<image class="img-add" bindtap="chooseImage" src='./../../images/icon_43.png'></image>
 						<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
 							<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
 							<image src="{{item}}" mode="aspectFill"></image>

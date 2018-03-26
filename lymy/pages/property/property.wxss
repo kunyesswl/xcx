@@ -1,3 +1,16 @@
+.radio-group{
+    font-size: 40rpx;
+    display: flex;
+    padding: 0px 20px 0px 20px;
+}
+.radio-group icon{
+	margin-right:50rpx;
+}
+
+.icon-item{
+  margin: 9px 0px 0px 5px;
+}
+
 .bright789_view_hide{ 
  display: none; 
 } 

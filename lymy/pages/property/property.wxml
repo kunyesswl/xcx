@@ -31,7 +31,8 @@
 		<view class="group-header">上传图片</view>
 		<view class="group-body">
 			<view class="img-upload">
-				<view class="img-add" bindtap="chooseImage" style='border-style:solid;border-width:2px;'></view>
+      <image class="img-add" bindtap="chooseImage" src='./../../images/icon_43.png'></image>
+				
 				<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
 					<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
 					<image src="{{item}}" mode="aspectFill"></image>
@@ -42,11 +43,16 @@
 			<view class="group-body">
 				<view class="input-list">
 					<view class="input-item">
-						<radio-group class="radio-group" bindchange="radioChange">
-							 <label class="radio" wx:for-items="{{items}}">
-							 <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-							 </label>
-						</radio-group>
+						<view class="radio-group" >
+				<label class="radio-group"  bindtap="radioChange" data-index="1">
+					<text>是</text> 
+					<icon type="{{showView?'circle':'success'}}" size="25" class='icon-item'/> 
+				</label>
+				<label class="radio-group"  bindtap="radioChange" data-index="0">
+					<text>否</text> 
+					<icon type="{{showView?'success':'circle'}}" size="25" class='icon-item'/>
+				</label>
+		</view>
 					</view>
 				</view>
 			</view>

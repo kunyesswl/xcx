@@ -4,3 +4,8 @@
 	display:block;
 	height:600rpx;
 }
+.right-ctn{
+	display:flex;
+	flex-direction:row-reverse;
+	padding:20rpx;
+}

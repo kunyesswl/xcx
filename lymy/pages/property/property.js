@@ -1,9 +1,10 @@
 var util = require('../../utils/util.js');
+var areaId = "";
 Page({
   data: {
-    items: [
-      { name: '1', value: '显示' },
-      { name: '2', value: '隐藏', checked: 'true' },
+    areas: [
+      { id: '2', name: '是' },
+      { id: '1', name: '否' }
     ],
     checitems:[],
     // selected:null,
@@ -53,8 +54,9 @@ Page({
   },
   radioChange: function (e) {
     var that = this;
+	const index = e.currentTarget.dataset.index;
     that.setData({
-      showView: (!that.data.showView)
+      showView: index=="0"
     })
   },
   chooseImage: function () {
@@ -118,9 +120,7 @@ Page({
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitRepair/",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
-			  util.msg("提交成功","success",function(){
-				  
-			  });
+        util.alertWindow("感谢您及时反馈的建议。");
 		  }else{
 			  util.msg("提交失败");
 		  }

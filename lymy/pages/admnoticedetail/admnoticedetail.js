@@ -8,7 +8,7 @@ Page({
 	  creator:"",
 	  createTime:"",
 	  isAboutIndex:0,
-	  isAboutArray:["内部公告","外部公告"]
+    isAboutArray: ["外部公告", "内部公告"]
   },
   onLoad: function (option) {
 	this.setData({
@@ -44,13 +44,9 @@ Page({
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/noticeDel/",{id:_this.data.id},function(res){
 		  console.log(res);
 		  if(res.data.code=="0"){
-			  util.msg("删除成功","success",function(){
-				  wx.navigateTo({
-				  url: '../admnoticelist/admnoticelist'
-				})
-			  }); 
+        util.alertWindow("删除成功");
 		  }else{
-			  util.msg("删除失败");
+        util.alertWindowlose("删除失败");
 		  }
 	  });
 	  });
@@ -103,11 +99,9 @@ Page({
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/sendNotice/",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
-			  util.msg("提交成功","success",function(){
-				  
-			  });
+        util.alertWindow("提交成功");
 		  }else{
-			  util.msg("提交失败");
+        util.alertWindowlose("提交失败");
 		  }
 		  });
 	  }); //上传图片同时提交表单信息 function(r) 为回调函数

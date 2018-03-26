@@ -4,6 +4,8 @@ Page({
 	  id:"",
 	  title:"",
 	  content:"",
+	  creator:"",
+	  creatTime:"",
 	  imgs:[]
   },
   onLoad: function (option) {
@@ -23,6 +25,10 @@ Page({
 				id:_data.id,
 				title:_data.title,
 				content:_data.content,
+				//creator:_data.creator,
+				//creatTime:_data.createTime,
+				creator:"创建人1",
+				creatTime:"2018-03-01",
 				imgs:_data.imgUrls
 			}) 
 		  }
