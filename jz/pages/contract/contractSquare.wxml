@@ -1,0 +1,243 @@
+<view class="group">
+		<view class="group-header">基本信息</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">合同号</text>
+					<view class="input-item-content">
+						<input type="text" name="contractCode" placeholder="请输入合同号"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">铺位编号</text>
+					<view class="input-item-content">
+						<input type="text" name="shopCode" placeholder="请输入商铺号"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+	
+		<view class="group-header">签约人员</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">承租人</text>
+					<view class="input-item-content">
+						<input type="text" name="partyb" placeholder="请输入承租人(乙方)"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="group-header">租赁铺位的地址及面积</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">楼层</text>
+					<view class="input-item-content">
+						<input type="text" name="floor" placeholder="请输入第几层"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">商铺号</text>
+					<view class="input-item-content">
+						<input type="text" name="shopNo" placeholder="请输入商铺号"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">面积</text>
+					<view class="input-item-content">
+						<input type="digit" name="shopArea" placeholder="请输入建筑面积(平分米)"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">铺位间数</text>
+					<view class="input-item-content">
+						<input type="number" name="shopQuantity" placeholder="请输入铺位多少间"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="group-header">租赁用途</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">经营范围</text>
+					<view class="input-item-content">
+						<input type="text" name="businessScope" placeholder="请输入经营范围"></input>
+					</view>
+					
+				</view>
+			</view>
+		</view>
+		<view class="group-header">租赁期限</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">租赁期</text>
+					<view class="input-item-content">
+						<input type="digit" name="leaseAmount" placeholder="请输入租期共多少年"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">开始时间</text>
+					<view class="input-item-content">
+					<picker mode="date" value="{{startDate}}" bindchange="bindDayChange" data-type="1">
+						<input type="text" hidden="true" name="leaseStart" placeholder="开始时间" value="{{startDate}}"></input>
+						<text>{{startDate}}</text>
+					</picker>
+					
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">到期时间</text>
+					<view class="input-item-content">
+					<picker mode="date" value="{{endDate}}" bindchange="bindDayChange" data-type="2">
+						<input type="text" hidden="true" name="leaseEnd" placeholder="到期时间" value="{{endDate}}"></input>
+						<text>{{endDate}}</text>
+					</picker>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="group-header">租金及付款方式</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">承租面积</text>
+					<view class="input-item-content">
+						<input type="digit" name="leaseArea" placeholder="请输入承租面积多少平方米"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">首年每月</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalPerMonth1" placeholder="多少元/平方米"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">合计</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalAmonth" placeholder="月租金合计多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第二年</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalPerMonth2" placeholder="第二年月租金多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第三年</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalPerMonth3" placeholder="第三年月租金多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第四年</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalPerMonth4" placeholder="第四年月租金多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第五年</text>
+					<view class="input-item-content">
+						<input type="digit" name="rentalPerMonth5" placeholder="第五年月租金多少元"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<view class="group-header">管理服务费</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">市场管理费</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthPerSq" placeholder="每月每平方米多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">合计</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthY1" placeholder="市场管理费合计每月多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第二年</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthY2" placeholder="第二年每月多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第三年</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthY3" placeholder="第三年每月多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第四年</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthY4" placeholder="第四年每月多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">第五年</text>
+					<view class="input-item-content">
+						<input type="digit" name="chargePerMonthY5" placeholder="第五年每月多少元"></input>
+					</view>
+				</view>
+			</view>
+		</view>	
+		<view class="group-header">其他费用</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">水电周转金</text>
+					<view class="input-item-content">
+						<input type="digit" name="revolvingPerMonth" placeholder="每月多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">综合费用</text>
+					<view class="input-item-content">
+						<input type="digit" name="multiplePerYear" placeholder="每年多少元"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">分摊设备</text>
+					<view class="input-item-content">
+						<input type="digit" name="shareEquipment" placeholder="请输入分摊设备"></input>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label_c000">分摊交纳</text>
+					<view class="input-item-content">
+						<input type="digit" name="shareCharge" placeholder="需交纳多少元"></input>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="group-header">履约保证金及租金的支付方式和期限</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">履约保证金</text>
+					<view class="input-item-content">
+						<input type="text" name="deposit" placeholder="履约保证金多少元"></input>
+					</view>
+				</view>
+			</view>
+		</view> 
+		<view class="group-header">补充条款</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label_c000">补充条款</text>
+					<view class="input-item-content">
+						<textarea name="addition" placeholder="请输入补充条款"></textarea>
+					</view>
+				</view>
+			</view>
+		</view> 
+	</view>

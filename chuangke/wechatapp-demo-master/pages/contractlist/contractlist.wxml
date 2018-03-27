@@ -1,0 +1,12 @@
+<view class="container">
+	<view class="my-list">
+		<navigator class="my-item" url="../contract/contract?_type=0">
+			<image src="../../images/icon_24.png" mode="aspectFit"></image>
+			<text>利远广场合同</text>
+		</navigator>
+		<navigator class="my-item" url="../contract/contract?_type=1">
+			<image src="../../images/icon_32.png" mode="aspectFit"></image>
+			<text>利远分场合同</text>
+		</navigator>
+	</view>
+</view>

@@ -26,7 +26,7 @@
 					<view class="input-item">
 						<text class="input-item-label">公告类型</text>
 						<view class="input-item-content">
-							<picker id="isAbout" bindchange="bindSelect" name="isAbout" value="{{isAboutIndex}}" range="{{isAboutArray}}" mode="selector">{{isAboutArray[isAboutIndex]}}</picker>
+							<picker id="isAbout" bindchange="bindSelect" name="isAbout" value="{{isAboutIndex==0?1:0}}" range="{{isAboutArray}}" mode="selector">{{isAboutArray[isAboutIndex]}}</picker>
 						</view>
 					</view>
 					<view class="input-item">
@@ -39,7 +39,7 @@
 			</view>
 		</view>
 	<view class="btn-submit btn_flex">
-		<button class="btn-block_1_2 btn-orange" formType="submit">提交</button>
+		<button class="btn-block_1_2 btn-orange" formType="submit" wx:if="{{editAble}}">提交</button>
 		<button class="btn-block_1_2" bindtap="onDelete">删除</button>
 	</view>
 </form>

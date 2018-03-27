@@ -1,0 +1,32 @@
+<view class="app" hidden="{{page_hidden}}"><component-share pageQRCodeData="{{pageQRCodeData}}"></component-share>
+<component-backhome backToHomePage="{{backToHomePage}}"></component-backhome>
+<template name="zcCommunityList1">
+  <view class="element community-list"
+               data-compid="community1"
+               style='{{data.style}}'>
+    <view class="js-list-container" data-list-index="0">
+      <view class="community-list-item background-ele router js-to-detail"
+            wx:for="{{data.community_data}}" wx:key="" data-id="{{item.id}}" style="{{data.liStyle}}"
+            catchtap="turnToCommunityPage"
+            >
+        <view class="inner-content">
+          <image class="list-img" src="{{item.img}}" style="{{data.imgStyle}}"></image>
+          <view class="title-container">
+            <view class="title">
+              <text class="community-title">{{item.name}}</text>
+              <text class="topic-num" style="{{data.secStyle}}">话题 {{item.xcx_article_count}}</text>
+            </view>
+            <view>
+              <view class="community-desc" style="{{data.secStyle}}">{{item.description}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<view class="ele-container">
+  <template is="zcCommunityList1" data="{{data:community1}}"></template>
+</view>
+
+</view>

@@ -354,8 +354,12 @@ const chooseImage = (_cb) =>{
     });
 }
 const uploadFiles = (_url,_formData,_filePaths,_sb,_cb) =>{
-	sloading();
-	_uploadFile(_url,_formData,_filePaths,{},_sb,_cb)
+	if(!_filePaths || _filePaths.length ==0){
+		_cb({});
+	}else{
+		sloading();
+		_uploadFile(_url,_formData,_filePaths,{},_sb,_cb)
+	}
 }
 const _uploadFile = (_url,_formData,_filePaths,_data,_sb,_cb) =>{
 	 var i=_data.i?_data.i:0;//当前上传的哪张图片

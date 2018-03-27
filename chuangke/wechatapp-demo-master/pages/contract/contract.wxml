@@ -1,0 +1,10 @@
+<!--logs.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="container">
+	<view class="container-body space-content">
+	  <view class="wxParse"><template is="wxParse" data="{{wxParseData:contract_content.nodes}}"/> </view>
+	</view>
+	<view class="container-footer">
+		<text class="apply-btn">导出</text>
+	</view>
+</view>

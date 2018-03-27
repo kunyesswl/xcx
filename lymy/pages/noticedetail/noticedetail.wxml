@@ -19,7 +19,7 @@
 			</view>
 			<view class="input-item">
 				<view class="conference-item-img" wx:for="{{imgs}}" wx:for-item="item">
-					<image src="{{item}}" mode="aspectFill"></image>
+					<image  bindtap='imgYu' data-list="{{imgs}}" data-src="{{item}}" src="{{item}}" mode="aspectFill"></image>
 				</view>
 			</view>
 			<view class="input-item">

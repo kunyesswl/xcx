@@ -1,0 +1,107 @@
+@import '../space/space.wxss';
+@import '../../wxParse/wxParse.wxss';
+.halfwidth-item{
+	width: 50%;
+	display: inline-block;
+}
+
+view{
+	color:#000;
+}
+.contract_header {
+	
+}
+.contract_header p{
+	margin:0pt 0pt 10pt;
+}
+.contract_header p span .kt18{
+	font-family:楷体;  font-weight:bold
+}
+.contract_header p span .kt30{
+	font-family:楷体; font-size:30px; font-weight:bold
+}
+.contract_header p span fz18{
+}
+.contract_header p t_align{
+	text-align:center;
+}
+
+
+
+.contract_detail .bd_title .wxParse-span .wxParse-inline{
+	line-height:26pt; 
+	margin:0pt 0pt 10pt;  
+	text-align:center; 
+	font-family:黑体; 
+	font-size:14px; 
+	font-weight:bold;
+}
+.contract_detail .bd_title{
+	text-align:center;
+	text-indent:0pt; 	
+}
+.contract_detail .bd_title{
+	text-align:center !important;
+	text-indent:0pt !important; 	
+}
+.contract_detail .sign_title{
+	text-indent:0pt !important;
+}
+.contract_detail .sign_title .wxParse-span{
+	font-family:黑体 !important; 
+	font-size:10px !important; 
+	font-weight:bold
+}
+
+.contract_detail{}
+.contract_detail .wxParse-p{
+	line-height:16pt; 
+	margin:0pt 0pt 6pt;  
+	text-align:justify; 
+	text-indent:10pt; 
+}
+
+.contract_detail .wxParse-span{
+	font-family:楷体; 
+	font-size:12px;
+}
+
+.contract_detail .cd_title{
+	line-height:20pt; 
+	margin:0pt 0pt 6pt;  
+	text-align:justify; 
+	text-indent:10pt; 
+}
+.contract_detail .cd_title .wxParse-span{
+	font-family:黑体; 
+	font-size:12px; 
+	font-weight:bold;
+}
+.contract_detail .udline{
+	text-align:center !important;
+	text-indent:0 !important;
+	/*line-height:20pt;*/
+}
+.contract_foot {
+	font-family:楷体; 
+	font-size:12px;
+	display:flex;
+	justify-content:space-between;
+}
+
+.contract_foot .foot_sign{
+	width:50%;
+}
+.contract_sign_date{
+	font-family:楷体; 
+	font-size:12px;
+	text-align:right;
+}
+.udline_input{
+	text-align:left;
+	border-bottom:1px solid #000;
+	text-overflow:ellipsis;
+	font-size:inherit;
+	padding:0;
+	margin:0;
+}

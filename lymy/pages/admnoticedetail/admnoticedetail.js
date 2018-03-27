@@ -7,6 +7,7 @@ Page({
 	  content:"",
 	  creator:"",
 	  createTime:"",
+	  editAble:true,
 	  isAboutIndex:0,
     isAboutArray: ["外部公告", "内部公告"]
   },
@@ -24,6 +25,7 @@ Page({
 		  if(res.data.code=="000"){
 			  var _data = res.data.detail;
 			  _this.setData({
+				editAble:false,
 				id:_data.id,
 				title:_data.title,
 				content:_data.content,

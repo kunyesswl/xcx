@@ -1,9 +1,10 @@
 var util = require('../../utils/util.js');
+var areaId = "";
 Page({
   data: {
-    items: [
-      { name: '1', value: '显示' },
-      { name: '2', value: '隐藏', checked: 'true' },
+    areas: [
+      { id: '2', name: '是', isSelect: 'true' },
+      { id: '1', name: '否' },
     ],
     showtab:0,  //顶部选项卡索引
     showtabtype:'', //选中类型
@@ -51,6 +52,33 @@ Page({
       uploadimgs:[]
     })
     this.fetchQuestions();
+  },
+  //选择区域
+  selectAreaOk: function (event) {
+    var selectAreaId = event.target.dataset.areaid;
+    var that = this
+    areaId = selectAreaId
+    if (selectAreaId == 1) {
+      that.setData({
+        showView: (that.data.showView = true)
+      })
+    } else {
+      that.setData({
+        showView: (that.data.showView = false)
+      })
+    }
+    for (var i = 0; i < this.data.areas.length; i++) {
+      if (this.data.areas[i].id == selectAreaId) {
+        this.data.areas[i].isSelect = true
+      } else {
+        this.data.areas[i].isSelect = false
+      }
+    }
+    this.setData({
+      areas: this.data.areas,
+      skus: [],
+      hideArea: true
+    })
   },
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value)
@@ -157,11 +185,9 @@ Page({
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitComplaints/",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
-			  util.msg("提交成功","success",function(){
-				  
-			  });
+        util.alertWindow("感谢您对我市场的支持。");
 		  }else{
-			  util.msg("提交失败");
+        util.alertWindowlose("提交失败");
 		  }
 		  });
 	  }); //上传图片同时提交表单信息 function(r) 为回调函数
