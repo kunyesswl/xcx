@@ -1,5 +1,2 @@
 @import './../service/service.wxss';
 @import './../index/index.wxss';
-.shop-detail{
-	padding:20rpx;
-}

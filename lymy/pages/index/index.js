@@ -23,22 +23,22 @@ Page({
     this.setData({
       indexmenu: [
         {
-          'icon': './../../images/icon_05.png',
+          'icon': './../../images/icon_35.png',
           'text': '通知公告',
           'url': 'noticelist'
         },
         {
-          'icon': './../../images/icon_03.png',
+          'icon': './../../images/icon_36.png',
           'text': '报事报修',
           'url': 'property'
         },
         {
-          'icon': './../../images/icon_09.png',
+          'icon': './../../images/icon_32.png',
           'text': '投诉建议',
           'url': 'question'
         },
         {
-          'icon': './../../images/icon_01.png',
+          'icon': './../../images/icon_42.png',
           'text': '费用查询',
         }
       ],

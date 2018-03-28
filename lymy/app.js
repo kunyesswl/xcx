@@ -35,14 +35,14 @@ App({
 					wx.request({
 					  url: "https://www.kunyesswl.com/wxspl/selectEmployeePower",  
 					  header: {'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
-					  data: {openid:res.data.openid},  
+					  data: {openid:res.data.openId},  
 					  method: 'POST',  
 					  success:function(r2) {
               wx.request({
                 url: "https://www.kunyesswl.com/wxspl/saveAccessUser",
                 header: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' },
                 data: { 
-                  openid: res.data.openid,
+                  openid: res.data.openId,
                   headUrl: r1.userInfo.avatarUrl,
                   nickName: r1.userInfo.nickName,
                   mobile:""

@@ -81,13 +81,9 @@ Page({
 		   util.httppost("https://www.kunyesswl.com/wxspl/deleteEmployee",{id:_this.data.id},function(res){
 		  console.log(res);
 		  if(res.data.code=="0"){
-			  util.msg("删除成功","success",function(){
-				  wx.navigateTo({
-				  url: '../permissionlist/permissionlist'
-				})
-			  }); 
+        util.alertWindow("删除成功");
 		  }else{
-			  util.msg("删除失败");
+        util.alertWindowlose("删除失败");
 		  }
 	  });
 	  });
@@ -124,9 +120,9 @@ Page({
 	  util.httppost(url,data,function(res){
 		  console.log(res);
 		  if(res.data.code=="0"){
-			  util.msg("提交成功");
+        util.alertWindow("提交成功");
 		  }else{
-			  util.msg("提交失败");
+        util.alertWindowlose("提交失败");
 		  }
 	  });
 	  console.log(data);

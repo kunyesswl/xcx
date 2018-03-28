@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
   data: {
     servicedetail:{},
@@ -16,50 +17,10 @@ Page({
 		  "role":"店长",
 		  "id":"YG001001"
 	  },
-	  staffonlymenu:[
-        {
-          'icon':'./../../images/icon_01.png',
-          'text':'合同签署',
-          'url':'contractlist'
-        },
-        {
-          'icon':'./../../images/icon_25.png',
-          'text':'商铺信息'
-        },
-        {
-          'icon':'./../../images/icon_13.png',
-          'text':'请假申请'
-        },
-		{
-          'icon':'./../../images/icon_11.png',
-          'text':'调班申请'
-        },
-		{
-          'icon':'./../../images/icon_27.png',
-          'text':'员工权限',
-		  'url':'permissionlist'
-        },
-		{
-          'icon':'./../../images/icon_27.png',
-          'text':'公告发布',
-		  'url':'admnoticelist'
-        },
-		{
-          'icon':'./../../images/icon_27.png',
-          'text':'内部公告',
-		  'url':'staffnoticelist'
-        },
-		{
-          'icon':'./../../images/icon_27.png',
-          'text':'报修查询',
-		  'url':'admpropertylist'
-        },
-		{
-          'icon':'./../../images/icon_27.png',
-          'text':'咨询查询',
-		  'url':'admquestionlist'
-        }
-      ]
+    //staffonlymenu: app.globalData.persiomsson
+	staffonlymenu:[{"id":"5","icon":"./../../images/icon_38.png","url":"contractlist","text":"合同签署"},
+	{"id":"1","icon":"./../../images/icon_35.png","url":"staffnoticelist","text":"公告列表"}
+	,{"id":"6","icon":"./../../images/icon_32.png","url":"admpropertylist","text":"报修查看"}]
     })
     wx.setNavigationBarTitle({
       title: this.data.shopdetail.name

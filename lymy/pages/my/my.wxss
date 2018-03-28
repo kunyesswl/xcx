@@ -1,3 +1,19 @@
+.btn_yzm {
+  font-size: 24rpx;
+  color: #EB602E;
+  border: 2rpx solid #EB602E;
+  background-color: #fff;
+  padding: 0px;
+  height:60rpx;
+  width: 100%;
+  line-height: 120rpx;
+
+  display: table;
+}
+.btn_yzm text {
+  vertical-align:middle;
+  display: table-cell;
+}
 .my-item{
 	border-bottom: 1rpx solid #ddd;
 	padding: 20rpx;

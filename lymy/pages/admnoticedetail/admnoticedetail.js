@@ -45,7 +45,7 @@ Page({
 		  console.log("删除了"+_this.data.id)
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/noticeDel/",{id:_this.data.id},function(res){
 		  console.log(res);
-		  if(res.data.code=="0"){
+		  if(res.data.code=="000"){
         util.alertWindow("删除成功");
 		  }else{
         util.alertWindowlose("删除失败");

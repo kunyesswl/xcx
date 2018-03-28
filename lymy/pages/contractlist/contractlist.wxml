@@ -1,7 +1,7 @@
 <view class="container">
 	<view class="my-list">
 		<navigator class="my-item" url="../contract/contract?_type=1">
-			<image src="../../images/icon_24.png" mode="aspectFit"></image>
+			<image src="../../images/icon_32.png" mode="aspectFit"></image>
 			<text>利远广场合同</text>
 		</navigator>
 		<navigator class="my-item" url="../contract/contract?_type=2">
@@ -11,6 +11,10 @@
 		<navigator class="my-item" url="../contract/contract?_type=3">
 			<image src="../../images/icon_32.png" mode="aspectFit"></image>
 			<text>补充协议</text>
+		</navigator>
+		<navigator class="my-item" url="../contract/contract?_type=4">
+			<image src="../../images/icon_32.png" mode="aspectFit"></image>
+			<text>代理记账协议</text>
 		</navigator>
 	</view>
 </view>

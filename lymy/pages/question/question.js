@@ -182,6 +182,7 @@ Page({
 			  imageid = imageid.substr(0,imageid.length-1);
 		  }
 		  data.phones =imageid;
+      data.funcType = "0";
 		  util.httppost("https://www.kunyesswl.com/wxspl/func/submitComplaints/",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){

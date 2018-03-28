@@ -396,6 +396,34 @@ const _uploadFile = (_url,_formData,_filePaths,_data,_sb,_cb) =>{
                 });
 }
 
+function alertWindowlose(content){
+  wx.showModal({
+    title: '温馨提示',
+    showCancel: false,
+    content: content,
+    success: function (res) {
+      if (res.confirm) {
+      }
+    }
+  })
+}
+
+function alertWindow(content){
+  wx.showModal({
+    title: '温馨提示',
+    showCancel:false,
+    content: content,
+    success: function (res) {
+      if (res.confirm) {
+        wx.switchTab({
+          url: "../index/index"
+
+        })
+      }
+    }
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   formatDate:formatDate,
@@ -416,5 +444,7 @@ module.exports = {
   json2str:json2str,
   str2json:str2json,
   chooseImage:chooseImage,
-  uploadFiles:uploadFiles
+  uploadFiles:uploadFiles,
+  alertWindowlose:alertWindowlose,
+  alertWindow:alertWindow
 }

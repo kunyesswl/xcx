@@ -27,9 +27,11 @@ Page({
     const newlist = [];
 	
 	 var data = {
-		 "page":page
+		 "page":page,
+     "keyword": this.data.searchtext,
+     "isAbout":"1"
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList?isAbout=1",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/func/noticeQuery/pageList",data,function(res){
 		console.log(res);
 		if(res.data.code=="000"){
 			var newlst = [];

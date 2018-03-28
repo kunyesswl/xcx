@@ -18,7 +18,48 @@ Page({
     //   })
     // })
   },
-  
+  // 点击事件
+  callNumber1: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '18520611608'
+    })
+  },
+  // 点击事件
+  callNumber2: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '13533461185'
+    })
+  },
+  // 点击事件
+  callNumber3: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '13570368372'
+    })
+  },
+  // 点击事件
+  callNumber4: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '13760653693'
+    })
+  },
+  // 点击事件
+  callNumber5: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '61083330'
+    })
+  },
+  // 点击事件
+  callNumber6: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '22020888'
+    })
+  },
+  // 点击事件
+  callNumber7: function (e) {
+    wx.makePhoneCall({
+      phoneNumber: '13632453069'
+    })
+  },
   employeeChannel:function(){
     wx.navigateTo({
       url: "/pages/staffonly/staffonly"

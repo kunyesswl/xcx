@@ -1,15 +1,7 @@
 <view class="container">
 	<view class="container-body">
 		<view class="service-item shop-detail">
-			<view class="service-img">
-				<image src="../../images/tx1.jpg" mode="aspectFill"></image>
-			</view>
-			<view class="service-text">
-				<!--<view class="service-tite">{{shopdetail.name}}</view>-->
-				<view><text class="service-city">aaa：</text></view>
-				<view><text class="service-city">aaa：</text></view>
-				<view><text class="service-city">aaa：</text></view>
-			</view>
+				<image src="../../images/tx1.png" style='width:100%;height:109px;'></image>
 		</view>
 	<view class="index-menu">
 		<navigator class="index-menu-item" wx:for="{{staffonlymenu}}" wx:key="{{item.url}}" url="../{{item.url}}/{{item.url}}">

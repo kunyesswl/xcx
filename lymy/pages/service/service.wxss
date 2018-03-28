@@ -2,8 +2,7 @@
 	padding: 0 20rpx;
 }
 .service-item{
-	display: flex;
-	padding: 20rpx 0; 
+	display: flex; 
 	border-bottom: 1rpx solid #e8e8e8;
 }
 .service-img{
