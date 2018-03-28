@@ -186,7 +186,7 @@
 					<text class="input-item-label_c000">第五年</text>
 					<view class="input-item-content" style="display:flex;">
 						<input type="digit" name="chargePerMonthY5" placeholder="每月多少元" value="{{p.toFix(chargePerMonthY5)}}"></input>
-						<button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="9">清除</button>
+						<button class="btn-block btn-orange" style="width:80px;line-height:60rpx;" bindtap="cleartext"  data-type="8">清除</button>
 					</view>
 				</view>
 			</view>

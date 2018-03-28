@@ -5,6 +5,19 @@
   width: 100px;
 	padding-right:10rpx;
 }
+.ymtime_content{
+	display:flex;
+}
+.ymtime_content picker{
+	width:60rpx;
+	padding:0 20rpx 0 20rpx;
+}
+.input-item-label_c001{
+	display: block;
+	color: #000;
+	width: 280rpx;
+	padding-right:10rpx;
+}
 .group-header{
 	font-weight:bold;
 	margin-top:10px;

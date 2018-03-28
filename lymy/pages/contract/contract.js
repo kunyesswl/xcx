@@ -29,7 +29,11 @@ Page({
 	chargePerMonthY3:"",
 	chargePerMonthY4:"",
 	chargePerMonthY5:"",
-	deposit:0
+	deposit:0,
+	scTimeYear:[2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038],
+	scTimeMonth:[1,2,3,4,5,6,7,8,9,10,11,12],
+	scYearIndex:0,
+	scMonthIndex:0
   },
   onLoad: function (option) {
 	this.validate = new verify.WxValidate(
@@ -176,6 +180,16 @@ Page({
 			endDate:util.formatTime(date)
 		});
 	  break;
+	  case 'scTimeYear':
+		this.setData({
+			scYearIndex:e.detail.value
+		});
+	  break;
+	  case 'scTimeMonth':
+		this.setData({
+			scMonthIndex:e.detail.value
+		});
+		break;
 	   }
   },
   cleartext:function(e){
@@ -277,12 +291,14 @@ Page({
 		  url = "https://www.kunyesswl.com/wxspl/getParvialFieldPDF";
 	  }else if(contractType=="3"){
 		  url = "https://www.kunyesswl.com/wxspl/getSideAgreementPDF";
+	  }else if(contractType=="4"){
+		  url = "https://www.kunyesswl.com/wxspl/getBookkeepPDF";
 	  }
 	  util.httppost(url,data,function(res){
 		  if(res.data.code=="0"){
-			  util.msg("提交成功");
+        util.alertWindow("提交成功");
 		  }else{
-			  util.msg("提交失败");
+        util.alertWindowlose("提交失败");
 		  }
 	  });
 	 //util.download(pdfurl);
