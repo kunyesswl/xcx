@@ -6,6 +6,10 @@ Page({
     filterdata:{},  //筛选条件数据
     showfilter:false, //是否显示下拉筛选
     showfilterindex:null, //显示哪个筛选类目
+	sortindex:0,  //一级分类索引
+    sortid:0,  //一级分类id
+	atText:"待审批",
+	approvalTypes:[{"id":"0","title":"待审批"},{"id":"1","title":"已审批"},{"id":"2","title":"已退回"}], //审批状态显示
     perlist:[], //员工权限列表
     scrolltop:null, //滚动位置
     page: 0  //分页
@@ -27,8 +31,7 @@ Page({
     const newlist = [];
 	
 	 var data = {
-		 "placeType":this.data.pid,
-		 "type": this.data.aid,
+		 "approvalType":this.data.sortid,
 		 "page":page
 	 }
 	util.httppost("https://www.kunyesswl.com/wxspl/func/repairQuery/pageList/",data,function(res){
@@ -82,10 +85,40 @@ Page({
       scrolltop:e.detail.scrollTop
     })
   },
-  newpermission:function(e){
-	wx.navigateTo({
-      url: '../permissiondetail/permissiondetail'
+  setFilterPanel:function(e){ //展开筛选面板
+    const d = this.data;
+    const i = e.currentTarget.dataset.findex;
+    if(d.showfilterindex == i){
+      this.setData({
+        showfilter: false,
+        showfilterindex: null
+      })
+    }else{    
+      this.setData({
+        showfilter: true,
+        showfilterindex:i
+      })
+    }
+    console.log(d.showfilterindex);
+  },
+  hideFilter:function(){ //关闭筛选面板
+    this.setData({
+      showfilter: false,
+      showfilterindex: null
     })
+  },
+  setSortIndex:function(e){ //服务类别一级索引
+    const d= this.data;
+    const dataset = e.currentTarget.dataset;
+    this.setData({
+      sortindex:dataset.sortindex,
+      sortid:dataset.sortid,
+	  atText:dataset.sorttext
+    })
+    console.log('服务类别id：一级--'+this.data.sortid+',二级--'+this.data.subsortid);
+	this.hideFilter();
+	this.setData({page:0,perlist:[]});
+	this.fetchServiceData();
   },
   goToTop:function(){ //回到顶部
     this.setData({

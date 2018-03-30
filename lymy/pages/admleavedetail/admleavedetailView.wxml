@@ -1,0 +1,64 @@
+<form bindsubmit="onCancel">
+	<view class="group">
+			<view class="group-header">请假调休申请</view>
+			<view class="group-body">
+				<view class="input-list">
+					<input type="text" name="id" value="{{id}}" hidden="true"></input>
+					<input type="text" name="openid" value="{{openid}}" hidden="true"></input>
+					<text>{{content}}</text>
+					<view class="input-item">
+						<text class="input-item-label">类型</text>
+						<view class="input-item-content">
+							<text>{{leaveOff}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">请假天数</text>
+						<view class="input-item-content">
+							<text>{{days}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">开始时间</text>
+						<view class="input-item-content">
+							<text>{{startDate}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">到期时间</text>
+						<view class="input-item-content">
+							<text>{{endDate}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">审批状态</text>
+						<view class="input-item-content">
+							<text>{{approval_status}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">审批人</text>
+						<view class="input-item-content">
+							<text>{{approver}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">审批意见</text>
+						<view class="input-item-content">
+							<text>{{approvalContent}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">创建时间</text>
+						<view class="input-item-content">
+							<text>{{createTime}}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit">撤回</button>
+		<button class="btn-block_1_2" bindtap="onDelete">删除</button>
+	</view>
+</form>

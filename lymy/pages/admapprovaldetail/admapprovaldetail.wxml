@@ -1,0 +1,37 @@
+<view class="container container-gray">
+	<form bindsubmit="formSubmit">
+	<view class="group">
+			<view class="group-header">审批内容</view>
+			<view class="group-body">
+				<view class="input-list">
+					<input type="text" name="id" value="{{id}}" hidden="true"></input>
+					<input type="text" name="openid" value="{{openid}}" hidden="true"></input>
+					<block wx:if="{{type=='0'}}">
+						<include src="leavedetailView.wxml" />
+					</block>
+					<block wx:elif="{{type=='1'}}">
+						<include src="propertyView.wxml" />
+					</block>
+					<block wx:elif="{{type=='2'}}">
+						<include src="questionView.wxml" />
+					</block>
+					<view class="input-item">
+						<text class="input-item-label">是否同意</text>
+						<view class="input-item-content">
+							<picker id="isAgreen" bindchange="bindSelect" name="isAgreen" value="{{isAggree[isAggreeIndex].id}}" range="{{isAggree}}"  range-key="{{'text'}}" mode="selector">{{isAggree[isAggreeIndex].text}}</picker>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">审批意见</text>
+						<view class="input-item-content">
+							<textarea name="approvalContent" placeholder="请输入审批意见"></textarea>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit">提交</button>
+	</view>
+</form>
+</view>

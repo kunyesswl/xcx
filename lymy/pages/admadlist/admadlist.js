@@ -30,7 +30,7 @@ Page({
 	 var data = {
 		 "page":page
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/index/advertQuery",data,function(res){
+	util.httppost("https://www.kunyesswl.com/wxspl/index/advertQuery/pageList",data,function(res){
 		console.log(res);
 		if(res.data.code=="000"){
 			var newlst = [];
@@ -41,7 +41,7 @@ Page({
 				 newlst.push({
 					 "id":reslist[i].id,
 					"title":reslist[i].title,
-					"isAppl":_this.data.isAppl[reslist[i].isEnable],
+					"isAppl":_this.data.isAppl[reslist[i].status],
 					"createTime":reslist[i].createTime
 				})
 			 }
@@ -92,6 +92,10 @@ Page({
     setTimeout(()=>{
       wx.stopPullDownRefresh()
     },1000)
-  }
+  },
+  onShow :function(){
+    //生命周期函数--监听页面显示
+    // console.log('onShow');
+  },
 })
 

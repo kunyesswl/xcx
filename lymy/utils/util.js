@@ -408,17 +408,23 @@ function alertWindowlose(content){
   })
 }
 
-function alertWindow(content){
+function alertWindow(content,tourl){
   wx.showModal({
     title: '温馨提示',
     showCancel:false,
     content: content,
     success: function (res) {
       if (res.confirm) {
-        wx.switchTab({
-          url: "../index/index"
-
-        })
+		if(typeof tourl == "undefined"){
+			wx.switchTab({
+				url: "../index/index"
+			});
+		}else{
+			wx.redirectTo({
+				url: "../"+tourl+"/"+tourl
+			});
+		}
+        
       }
     }
   })

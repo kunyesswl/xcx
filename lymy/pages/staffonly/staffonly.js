@@ -21,7 +21,10 @@ Page({
 	staffonlymenu:[{"id":"5","icon":"./../../images/icon_38.png","url":"contractlist","text":"合同签署"},
 	{"id":"1","icon":"./../../images/icon_35.png","url":"staffnoticelist","text":"公告列表"}
 	,{"id":"6","icon":"./../../images/icon_32.png","url":"admpropertylist","text":"报修查看"}
-	,{"id":"11","icon":"./../../images/icon_32.png","url":"admadlist","text":"广告配置"}]
+	,{"id":"11","icon":"./../../images/icon_32.png","url":"admadlist","text":"广告配置"}
+	,{"id":"12","icon":"./../../images/icon_32.png","url":"admleavelist","text":"请假调休"}
+	,{"id":"12","icon":"./../../images/icon_32.png","url":"admapprovallist","text":"待办审批"}
+	,{"id":"12","icon":"./../../images/icon_32.png","url":"admquestionlist","text":"咨询列表"}]
     })
     wx.setNavigationBarTitle({
       title: this.data.shopdetail.name

@@ -5,6 +5,7 @@
 			<!--<button class="search-btn" bindtap="submitSearch" wx:if="{{showsearch}}">搜索</button> -->
 		</view>
 		<button class="search-extra-btn" bindtap="submitSearch">查询</button>
+		<button class="search-extra-btn" bindtap="newnotice">新增</button>
 	</view>
 	<view class="filter-flex">
 		<view class="filter-tab">
@@ -21,13 +22,15 @@
 	</view>
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="service-list">
-			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admpropertydetail/admpropertydetail?id={{item.id}}">
-				<view class="service-left">
-					<text class="service-city">{{item.title}}</text>
+			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admleavedetail/admleavedetail?id={{item.id}}">
+				<view class="service-text">
+					<view class="service-left">
+						<text class="service-city">{{item.title}}</text>
+					</view>
 				</view>
 				<view class="service-text">
-					<view><text class="service-city">商铺号：{{item.shopCode}}</text></view>
-					<view><text class="service-city">报修时间：{{item.createTime}}</text></view>
+					<view><text class="service-city">状态：{{item.isAppl}}</text></view>
+					<view><text class="service-city">发布时间：{{item.createTime}}</text></view>
 				</view>
 			</navigator>
 		</view>

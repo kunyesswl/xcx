@@ -5,15 +5,22 @@
 			<!--<button class="search-btn" bindtap="submitSearch" wx:if="{{showsearch}}">搜索</button> -->
 		</view>
 		<button class="search-extra-btn" bindtap="submitSearch">查询</button>
+		<button class="search-extra-btn" bindtap="newnotice">新增</button>
 	</view>
 	<view class="filter-flex">
 		<view class="filter-tab">
 			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：</text>{{atText}}
+			<text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">待办类型：</text>{{bussiText}}
 		</view>
 		<view class="filter-content" wx:if="{{showfilter}}">
 			<view class="filter-panel" wx:if="{{showfilterindex==1}}">
 				<view class="filter-panel-left">
-					<view wx:for="{{approvalTypes}}" wx:key="{{item.id}}" bindtap="setSortIndex" data-sortindex="{{index}}" data-sortid="{{item.id}}" data-sorttext="{{item.title}}"        class="{{sortindex==index?'active':''}}">{{item.title}}</view>
+					<view wx:for="{{approvalTypes}}" wx:key="{{item.id}}" bindtap="setSortIndex" data-sortindex="{{index}}" data-sortid="{{item.id}}" data-sorttext="{{item.title}}" class="{{sortindex==index?'active':''}}">{{item.title}}</view>
+				</view>
+			</view>
+			<view class="filter-panel" wx:if="{{showfilterindex==2}}">
+				<view class="filter-panel-left">
+					<view wx:for="{{bussiTypes}}" wx:key="{{item.id}}" bindtap="setSortIndex" data-sortindex="{{index}}" data-sortid="{{item.id}}" data-sorttext="{{item.title}}" class="{{sortindex==index?'active':''}}">{{item.title}}</view>
 				</view>
 			</view>
 		</view>
@@ -21,13 +28,15 @@
 	</view>
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="service-list">
-			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admpropertydetail/admpropertydetail?id={{item.id}}">
-				<view class="service-left">
-					<text class="service-city">{{item.title}}</text>
+			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admapprovaldetail/admapprovaldetail?id={{item.id}}">
+				<view class="service-text">
+					<view class="service-left">
+						<text class="service-city">{{item.title}}</text>
+					</view>
 				</view>
 				<view class="service-text">
-					<view><text class="service-city">商铺号：{{item.shopCode}}</text></view>
-					<view><text class="service-city">报修时间：{{item.createTime}}</text></view>
+					<view><text class="service-city">提交人：{{item.submitUser}}</text></view>
+					<view><text class="service-city">提交时间：{{item.submitTime}}</text></view>
 				</view>
 			</navigator>
 		</view>

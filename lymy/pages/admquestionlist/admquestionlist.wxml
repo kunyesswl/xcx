@@ -6,6 +6,19 @@
 		</view>
 		<button class="search-extra-btn" bindtap="submitSearch">查询</button>
 	</view>
+	<view class="filter-flex">
+		<view class="filter-tab">
+			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：</text>{{atText}}
+		</view>
+		<view class="filter-content" wx:if="{{showfilter}}">
+			<view class="filter-panel" wx:if="{{showfilterindex==1}}">
+				<view class="filter-panel-left">
+					<view wx:for="{{approvalTypes}}" wx:key="{{item.id}}" bindtap="setSortIndex" data-sortindex="{{index}}" data-sortid="{{item.id}}" data-sorttext="{{item.title}}"        class="{{sortindex==index?'active':''}}">{{item.title}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="filter-shadow" wx:if="{{showfilter}}" bindtap="hideFilter"></view>
+	</view>
 	<scroll-view class="container-body" scroll-y="true" scroll-top="{{scrolltop}}" bindscroll="scrollHandle" lower-threshold="50" bindscrolltolower="scrollLoading">
 		<view class="service-list">
 			<navigator class="service-item" wx:for="{{perlist}}" wx:key="{{item.id}}" url="../admquestiondetail/admquestiondetail?id={{item.id}}">

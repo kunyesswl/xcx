@@ -1,0 +1,47 @@
+<form bindsubmit="formSubmit">
+	<view class="group">
+			<view class="group-header">请假调休申请</view>
+			<view class="group-body">
+				<view class="input-list">
+					<input type="text" name="id" value="{{id}}" hidden="true"></input>
+					<input type="text" name="openid" value="{{openid}}" hidden="true"></input>
+					<textarea placeholder="请输入请假调休事由，最多可以输入1000字" maxlength="1000" name="content" value="{{content}}"></textarea>
+					<view class="input-item">
+						<text class="input-item-label">类型</text>
+						<view class="input-item-content">
+							<picker id="leaveOff" bindchange="bindSelect" name="leaveOff" value="{{isApplArray[isApplIndex].id}}" range="{{isApplArray}}"  range-key="{{'text'}}" mode="selector">{{isApplArray[isApplIndex].text}}</picker>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">请假天数</text>
+						<view class="input-item-content">
+							<input type="number" name="days" value="0"></input>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">开始时间</text>
+						<view class="input-item-content">
+						<picker mode="date" value="{{startDate}}" bindchange="bindDayChange" data-type="1">
+							<input type="text" hidden="true" name="startTime" placeholder="开始时间" value="{{startDate}}"></input>
+							<text>{{startDate}}</text>
+						</picker>
+						
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">到期时间</text>
+						<view class="input-item-content">
+						<picker mode="date" value="{{endDate}}" bindchange="bindDayChange" data-type="2">
+							<input type="text" hidden="true" name="endTime" placeholder="到期时间" value="{{endDate}}"></input>
+							<text>{{endDate}}</text>
+						</picker>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit" wx:if="{{editAble}}">提交</button>
+		<button class="btn-block_1_2" bindtap="onDelete">删除</button>
+	</view>
+</form>	

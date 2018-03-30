@@ -1,0 +1,27 @@
+
+					<text>{{content}}</text>
+					<view class="input-item">
+						<text class="input-item-label">类型</text>
+						<view class="input-item-content">
+							<text>{{obj.leaveOff}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">请假天数</text>
+						<view class="input-item-content">
+							<text>{{obj.days}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">开始时间</text>
+						<view class="input-item-content">
+							<text>{{obj.startDate}}</text>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">到期时间</text>
+						<view class="input-item-content">
+							<text>{{obj.endDate}}</text>
+						</view>
+					</view>
+					

@@ -1,9 +1,12 @@
 <view class="container container-gray">
+<form bindsubmit="formSubmit">
 	<view class="group">
 		<view class="group-header">问题描述</view>
 		<view class="group-body">
 			<view class="input-list">
 				<view class="input-item">
+					<input type="text" name="id" value="{{id}}" hidden="true"></input>
+					<input type="text" name="openid" value="{{openid}}" hidden="true"></input>
 					<text class="input-item-label">标题</text>
 					<view class="input-item-content">
 						<text>{{title}}</text>
@@ -46,5 +49,33 @@
 				</view>
 			</view>
 		</view>
+		
+		<view class="group-header">审批信息</view>
+		<view class="group-body">
+			<view class="input-list">
+				<view class="input-item">
+					<text class="input-item-label">审批状态</text>
+					<view class="input-item-content">
+						<text>{{approval_status}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">审批人</text>
+					<view class="input-item-content">
+						<text>{{approver}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">审批意见</text>
+					<view class="input-item-content">
+						<text>{{approval_content}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
 	</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit" wx:if="{{apprAble}}">提交审批</button>
+	</view>
+</form>
 </view>

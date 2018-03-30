@@ -116,7 +116,7 @@ Page({
 		  util.httppost("https://www.kunyesswl.com/wxspl/index/submitAdvert",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
-        util.alertWindow("提交成功");
+        util.alertWindow("提交成功","admadlist");
 		  }else{
         util.alertWindowlose("提交失败");
 		  }

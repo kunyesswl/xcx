@@ -1,0 +1,34 @@
+
+				<view class="input-item">
+					<text class="input-item-label">标题</text>
+					<view class="input-item-content">
+						<text>{{obj.title}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">问题描述</text>
+					<view class="input-item-content">
+						<text>{{obj.content}}</text>
+					</view>
+				</view>
+			<view class="conference-item-img" wx:for="{{obj.imgs}}" wx:for-item="item">
+					<image bindtap='imgYu' data-list="{{imgs}}" data-src="{{dImg}}"  src="{{item}}" mode="aspectFit"></image>
+			</view>
+				<view class="input-item">
+					<text class="input-item-label">商户号</text>
+					<view class="input-item-content">
+						<text>{{obj.shopcode}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系人</text>
+					<view class="input-item-content">
+						<text>{{obj.contactor}}</text>
+					</view>
+				</view>
+				<view class="input-item">
+					<text class="input-item-label">联系电话</text>
+					<view class="input-item-content">
+						<text>{{obj.mobile}}</text>
+					</view>
+				</view>
