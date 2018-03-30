@@ -1,0 +1,63 @@
+<view class="container container-gray">
+<form bindsubmit="formSubmit">
+		<view class="group">
+			<view class="group-header">广告信息</view>
+			<view class="group-body">
+				<view class="input-list">
+					<input type="text" name="id" value="{{id}}" hidden="true"></input>
+					<textarea placeholder="请输入广告信息，最多可以输入1000字" maxlength="1000" name="content" value="{{content}}"></textarea>
+					<view class="input-item">
+					<view class="img-upload">
+						<image class="img-add" bindtap="chooseImage" src='./../../images/icon_43.png'></image>
+						<view class="img-item" bindlongtap="editImage" wx:for="{{uploadimgs}}" wx:key="{{index}}">
+							<icon type="clear" size="20" color="red" bindtap="deleteImg" data-index="{{index}}"/>
+							<image src="{{item}}" mode="aspectFill"></image>
+						</view>
+					</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">广告状态</text>
+						<view class="input-item-content">
+							<picker id="isEnable" bindchange="bindSelect" name="isEnable" value="{{isApplIndex==0?1:0}}" range="{{isApplArray}}" mode="selector">{{isApplArray[isApplIndex]}}</picker>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">广告位置</text>
+						<view class="input-item-content">
+							<input type="number" placeholder="请输入广告位置" name="position" value="0"></input>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">开始时间</text>
+						<view class="input-item-content">
+						<picker mode="date" value="{{startDate}}" bindchange="bindDayChange" data-type="1">
+							<input type="text" hidden="true" name="beginTime" placeholder="开始时间" value="{{startDate}}"></input>
+							<text>{{startDate}}</text>
+						</picker>
+						
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">到期时间</text>
+						<view class="input-item-content">
+						<picker mode="date" value="{{endDate}}" bindchange="bindDayChange" data-type="2">
+							<input type="text" hidden="true" name="endTime" placeholder="到期时间" value="{{endDate}}"></input>
+							<text>{{endDate}}</text>
+						</picker>
+						</view>
+					</view>
+					<view class="input-item">
+						<text class="input-item-label">发布人</text>
+						<view class="input-item-content">
+							<input type="text" placeholder="请输入发布人" name="creator" value="{{creator}}"></input>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	<view class="btn-submit btn_flex">
+		<button class="btn-block_1_2 btn-orange" formType="submit" wx:if="{{editAble}}">提交</button>
+		<button class="btn-block_1_2" bindtap="onDelete">删除</button>
+	</view>
+</form>
+</view>

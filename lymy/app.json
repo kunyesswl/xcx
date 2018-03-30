@@ -25,6 +25,8 @@
 	"pages/admquestiondetail/admquestiondetail",
 	"pages/admnoticelist/admnoticelist",
 	"pages/admnoticedetail/admnoticedetail",
+	"pages/admadlist/admadlist",
+	"pages/admaddetail/admaddetail",
 	"pages/noticelist/noticelist",
 	"pages/noticedetail/noticedetail",
 	"pages/staffnoticelist/staffnoticelist",

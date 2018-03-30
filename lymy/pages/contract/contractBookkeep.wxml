@@ -3,12 +3,6 @@
 		<view class="group-body">
 			<view class="input-list">
 				<view class="input-item">
-					<text class="input-item-label_c000">合同号</text>
-					<view class="input-item-content">
-						<input type="text" name="contractCode" placeholder="请输入合同号"></input>
-					</view>
-				</view>
-				<view class="input-item">
 					<text class="input-item-label_c000">铺位编号</text>
 					<view class="input-item-content">
 						<input type="text" name="shopCode" placeholder="请输入商铺号" id="shopCode" ></input>
@@ -44,24 +38,12 @@
 					</view>
 				</view>
 				<view class="input-item">
-					<text class="input-item-label_c001">进出口退税企业</text>
-					<view class="input-item-content">
-						<input type="digit" id="jcktsqy" name="jcktsqy" placeholder="请输入进出口退税企业每月费用"></input>
-					</view>
-				</view>
-				<view class="input-item">
 					<text class="input-item-label_c001">开始计算时间</text>
 					<view class="input-item-content ymtime_content">
 						<picker id="scTimeYear" bindchange="bindSelect" name="scTimeYear" value="{{scYearIndex=='0'?'':scTimeYear[scYearIndex]}}" range="{{scTimeYear}}" mode="selector">{{scTimeYear[scYearIndex]}}</picker>
 						<text>年</text>
 						<picker id="scTimeMonth" bindchange="bindSelect" name="scTimeMonth" value="{{scMonthIndex=='0'?'':scTimeMonth[scMonthIndex]}}" range="{{scTimeMonth}}" mode="selector">{{scTimeMonth[scMonthIndex]}}</picker>
 						<text>月</text>
-					</view>
-				</view>
-				<view class="input-item">
-					<text class="input-item-label_c001">全年凭证/账簿费用</text>
-					<view class="input-item-content">
-						<input type="digit" id="pzzbfy" name="pzzbfy" placeholder="请输入全年凭证/账簿费用" value="贰佰"></input>
 					</view>
 				</view>
 			</view>
