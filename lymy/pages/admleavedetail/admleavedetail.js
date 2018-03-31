@@ -12,7 +12,7 @@ Page({
 	  startDate:util.formatDate(new Date()),
     endDate: util.formatDate(new Date()),
 	  openid:app.globalData.openId,
-	  approvalObj:{"0":"待审批","1":"已审批","2":"已退回"},
+	  approvalObj:{"0":"待审批","1":"已审批","2":"已退回","3":"未提交"},
 	  approver:"",
 	  approvalContent:"",
 	  approval_status:"",
@@ -34,7 +34,7 @@ Page({
 		  if(res.data.code=="0"){
 			  var _data = res.data.data[0];
 			  _this.setData({
-				editAble:_data.approval_status=="0",
+				editAble:_data.approval_status=="3",
 				id:_data.id,
 				title:_data.title,
 				content:_data.content,
