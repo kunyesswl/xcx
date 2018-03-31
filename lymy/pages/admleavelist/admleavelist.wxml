@@ -9,7 +9,7 @@
 	</view>
 	<view class="filter-flex">
 		<view class="filter-tab">
-			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：</text><text>{{atText}}</text>
+			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：{{atText}}</text>
 		</view>
 		<view class="filter-content" wx:if="{{showfilter}}">
 			<view class="filter-panel" wx:if="{{showfilterindex==1}}">

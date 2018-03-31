@@ -5,12 +5,11 @@
 			<!--<button class="search-btn" bindtap="submitSearch" wx:if="{{showsearch}}">搜索</button> -->
 		</view>
 		<button class="search-extra-btn" bindtap="submitSearch">查询</button>
-		<button class="search-extra-btn" bindtap="newnotice">新增</button>
 	</view>
 	<view class="filter-flex">
 		<view class="filter-tab" style='margin: 0px 10px 0px 0px;'>
-			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：</text><span>{{atText}}</span>
-			<text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">待办类型：</text><span>{{bussiText}}</span>
+			<text bindtap="setFilterPanel" data-findex="1" class="{{showfilterindex==1?'active':''}}">审批状态：{{atText}}</text>
+			<text bindtap="setFilterPanel" data-findex="2" class="{{showfilterindex==2?'active':''}}">待办类型：{{bussiText}}</text>
 		</view>
 		<view class="filter-content" wx:if="{{showfilter}}">
 			<view class="filter-panel" wx:if="{{showfilterindex==1}}">
