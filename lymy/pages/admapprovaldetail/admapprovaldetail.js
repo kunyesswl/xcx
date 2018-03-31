@@ -7,7 +7,7 @@ Page({
 	  isAggree:[{"id":"0","text":"同意"},{"id":"1","text":"不同意"}],
 	  isAggreeIndex:0,
 	  obj:{},
-	  detailurl:{"0":"selectLeaveById","1":"func/repairDetail","2":"func/complaintsDetail"},
+    detailurl: { "0":"selectLeaveById","1":"func/repairDetail","2":"func/complaintsDetail"},
 	  apprurl:{"0":"approvalLeave","1":"func/approvalProperty","2":"func/approvalQuestion"},
 	  openid:app.globalData.openId
   },
@@ -15,7 +15,8 @@ Page({
 	  console.log(option);
 	this.setData({
 		id:option.id?option.id:"",
-		type:option.type?option.type:""
+		type:option.type?option.type:"",
+    openid: app.globalData.openId
 	});
     this.fetchData()
   },
@@ -23,10 +24,10 @@ Page({
 	  var _this = this;
 	 if(this.data.id){
 		var durl = this.data.detailurl[this.data.type]
-		util.httppost("https://www.kunyesswl.com/"+durl,{id:_this.data.id},function(res){
+    util.httppost("https://www.kunyesswl.com/wxspl/" + durl, { id: _this.data.id, openid: app.globalData.openId},function(res){
 		  console.log(res);
-		  if(res.data.code=="000"){
-			  var _data = res.data.detail;
+		  if(res.data.code=="0"){
+			  var _data = res.data.data[0];
 			  _this.setData({
 				  obj:_data,
 				isApplIndex: isNaN(_data.leaveOff)?0:parseInt(_data.leaveOff)

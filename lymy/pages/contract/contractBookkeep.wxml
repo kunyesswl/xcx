@@ -40,9 +40,9 @@
 				<view class="input-item">
 					<text class="input-item-label_c001">开始计算时间</text>
 					<view class="input-item-content ymtime_content">
-						<picker id="scTimeYear" bindchange="bindSelect" name="scTimeYear" value="{{scYearIndex=='0'?'':scTimeYear[scYearIndex]}}" range="{{scTimeYear}}" mode="selector">{{scTimeYear[scYearIndex]}}</picker>
+						<picker id="scTimeYear" bindchange="bindSelect" name="scTimeYear" value="{{scYearIndex=='0'?'2018':scTimeYear[scYearIndex]}}" range="{{scTimeYear}}" mode="selector">{{scTimeYear[scYearIndex]}}</picker>
 						<text>年</text>
-						<picker id="scTimeMonth" bindchange="bindSelect" name="scTimeMonth" value="{{scMonthIndex=='0'?'':scTimeMonth[scMonthIndex]}}" range="{{scTimeMonth}}" mode="selector">{{scTimeMonth[scMonthIndex]}}</picker>
+						<picker id="scTimeMonth" bindchange="bindSelect" name="scTimeMonth" value="{{scMonthIndex=='0'?'1':scTimeMonth[scMonthIndex]}}" range="{{scTimeMonth}}" mode="selector">{{scTimeMonth[scMonthIndex]}}</picker>
 						<text>月</text>
 					</view>
 				</view>

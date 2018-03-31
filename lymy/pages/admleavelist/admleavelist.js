@@ -1,4 +1,5 @@
 var util = require('../../utils/util.js');
+var app = getApp();
 Page({
   data: {
     showsearch:false,   //显示搜索按钮
@@ -7,12 +8,13 @@ Page({
     showfilter:false, //是否显示下拉筛选
     showfilterindex:null, //显示哪个筛选类目
 	sortindex:0,  //一级分类索引
-    sortid:null,  //一级分类id
+    sortid:"0",  //一级分类id
 	atText:"待审批",
-	approvalTypes:[{"id":"0","title":"待审批"},{"id":"1","title":"已审批"},{"id":"2","title":"已退回"}], //审批状态显示
+	approvalTypes:[{"id":"0","title":"待审批"},{"id":"1","title":"已审批"},{"id":"2","title":"已退回"},{"id":"3","title":"未提交"}], //审批状态显示
     perlist:[], //员工权限列表
     scrolltop:null, //滚动位置
 	isAppl:{"0":"禁用","1":"启用"},
+  isStatus: { "0": "待审", "1": "已通过", "2": "退回", "3": "撤回" },
 	openid:"",
     page: 0  //分页
   },
@@ -34,21 +36,21 @@ Page({
 	
 	 var data = {
 		 "page":page,
-		 "openId":_this.data.openid,
-		 "approvalType":_this.data.sortid
+		 "approvalType":_this.data.sortid,
+     "openid": app.globalData.openId
 	 }
-	util.httppost("https://www.kunyesswl.com/wxspl/selectLeave",data,function(res){
+   util.httppost("https://www.kunyesswl.com/wxspl/selectLeaveList",data,function(res){
 		console.log(res);
-		if(res.data.code=="000"){
+		if(res.data.code=="0"){
 			var newlst = [];
-			var reslist = res.data.list;
+			var reslist = res.data.data;
 			//var reslist = _this.testperlist();
 			if(reslist){
 				for (var i = 0; i < reslist.length; i++) {
 				 newlst.push({
 					 "id":reslist[i].id,
 					"title":reslist[i].title,
-					"isAppl":_this.data.isAppl[reslist[i].isEnable],
+          "isAppl": _this.data.isStatus[reslist[i].approvalStatus],
 					"createTime":reslist[i].createTime
 				})
 			 }
@@ -103,7 +105,6 @@ Page({
     })
     console.log('服务类别id：一级--'+this.data.sortid+',二级--'+this.data.subsortid);
 	this.hideFilter();
-	this.fetchServiceData();
   },
   scrollHandle:function(e){ //滚动事件
     this.setData({
@@ -124,15 +125,7 @@ Page({
     this.fetchServiceData();
   },
   onPullDownRefresh:function(){ //下拉刷新
-    this.setData({
-      page:0,
-      perlist:[]
-    })
-    this.fetchServiceData();
-    this.fetchFilterData();
-    setTimeout(()=>{
-      wx.stopPullDownRefresh()
-    },1000)
+    
   }
 })
 

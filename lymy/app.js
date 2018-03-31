@@ -31,7 +31,7 @@ App({
            data: { code: code, encryptedData:r1.encryptedData,iv:r1.iv },
            method: 'POST',
 				  success: function(res) {  
-          that.globalData.openId = res.data.openId;
+          //that.globalData.openId = res.data.openId;
 					wx.request({
 					  url: "https://www.kunyesswl.com/wxspl/selectEmployeePower",  
 					  header: {'Content-Type':'application/x-www-form-urlencoded;charset=utf-8'},
@@ -84,7 +84,7 @@ App({
   globalData:{
     //全局信息
     userInfo:null,
-    openId:null,
+    openId:"openidtest123",
     persiomsson: []
   }
 })

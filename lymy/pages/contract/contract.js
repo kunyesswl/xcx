@@ -292,7 +292,7 @@ Page({
 	  }else if(contractType=="3"){
 		  url = "https://www.kunyesswl.com/wxspl/getSideAgreementPDF";
 	  }else if(contractType=="4"){
-		  url = "https://www.kunyesswl.com/wxspl/getBookkeepPDF";
+      url = "https://www.kunyesswl.com/wxspl/getTallyPDF";
 	  }
 	  util.httppost(url,data,function(res){
 		  if(res.data.code=="0"){

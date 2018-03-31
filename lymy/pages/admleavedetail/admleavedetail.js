@@ -5,12 +5,12 @@ Page({
 	  title:"",
 	  content:"",
 	  createTime:"",
-	  editAble:false,
+	  editAble:true,
 	  isApplIndex:0,
 	  days:0,
 	  leaveOff:"",
 	  startDate:util.formatDate(new Date()),
-	  endDate:util.formatDate(new Date()),
+    endDate: util.formatDate(new Date()),
 	  openid:app.globalData.openId,
 	  approvalObj:{"0":"待审批","1":"已审批","2":"已退回"},
 	  approver:"",
@@ -21,6 +21,7 @@ Page({
   },
   onLoad: function (option) {
 	this.setData({
+    openid:app.globalData.openId,
 		id:option.id?option.id:""
 	});
     this.fetchData()
@@ -30,8 +31,8 @@ Page({
 	 if(this.data.id){
 		util.httppost("https://www.kunyesswl.com/wxspl/selectLeaveById",{id:_this.data.id},function(res){
 		  console.log(res);
-		  if(res.data.code=="000"){
-			  var _data = res.data.detail;
+		  if(res.data.code=="0"){
+			  var _data = res.data.data[0];
 			  _this.setData({
 				editAble:_data.approval_status=="0",
 				id:_data.id,
@@ -40,10 +41,10 @@ Page({
 				days:_data.days,
 				startTime:_data.startTime,
 				endTime:_data.endTime,
-				leaveOff:isApplObj[_data.leaveOff],
+        leaveOff: _this.data.isApplObj[_data.leaveOff],
 				approver:_data.approver,
-				approvalContent:_data.approvalContent,
-				approval_status:approvalObj[detail.approval_status],
+        approvalContent: _data.approverContent,
+        approval_status: _this.data.approvalObj[_data.approvalStatus],
 				createTime:_data.createTime,
 				isApplIndex: isNaN(_data.leaveOff)?0:parseInt(_data.leaveOff)
 			}) 

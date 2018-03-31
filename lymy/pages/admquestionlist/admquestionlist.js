@@ -9,7 +9,7 @@ Page({
 	sortindex:0,  //一级分类索引
     sortid:0,  //一级分类id
 	atText:"待审批",
-	approvalTypes:[{"id":"0","title":"待审批"},{"id":"1","title":"已审批"},{"id":"2","title":"已退回"}], //审批状态显示
+	approvalTypes:[{"id":"0","title":"待审批"},{"id":"1","title":"已审批"},{"id":"2","title":"已退回"},{"id":"3","title":"未提交"}], //审批状态显示
 	perlist:[],//列表
     scrolltop:null, //滚动位置
     page: 0  //分页
@@ -118,7 +118,6 @@ Page({
     console.log('服务类别id：一级--'+this.data.sortid+',二级--'+this.data.subsortid);
 	this.hideFilter();
 	this.setData({page:0,perlist:[]});
-	this.fetchServiceData();
   },
   newpermission:function(e){
 	wx.navigateTo({

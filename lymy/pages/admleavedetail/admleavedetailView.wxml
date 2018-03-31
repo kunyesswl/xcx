@@ -5,7 +5,12 @@
 				<view class="input-list">
 					<input type="text" name="id" value="{{id}}" hidden="true"></input>
 					<input type="text" name="openid" value="{{openid}}" hidden="true"></input>
-					<text>{{content}}</text>
+          <view class="input-item">
+						<text class="input-item-label">请假事由</text>
+						<view class="input-item-content">
+							<textarea maxlength="1000" name="content" value="{{content}}">{{content}}</textarea>
+						</view>
+					</view>
 					<view class="input-item">
 						<text class="input-item-label">类型</text>
 						<view class="input-item-content">

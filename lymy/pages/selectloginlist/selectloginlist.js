@@ -93,18 +93,10 @@ Page({
     })
   },
   scrollLoading:function(){ //滚动加载
-    this.fetchServiceData();
+    
   },
   onPullDownRefresh:function(){ //下拉刷新
-    this.setData({
-      page:0,
-      perlist:[]
-    })
-    this.fetchServiceData();
-    this.fetchFilterData();
-    setTimeout(()=>{
-      wx.stopPullDownRefresh()
-    },1000)
+    
   }
 })
 

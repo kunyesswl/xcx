@@ -81,7 +81,7 @@ Page({
 		   util.httppost("https://www.kunyesswl.com/wxspl/deleteEmployee",{id:_this.data.id},function(res){
 		  console.log(res);
 		  if(res.data.code=="0"){
-        util.alertWindow("删除成功");
+			  util.alertWindow("删除成功"); 
 		  }else{
         util.alertWindowlose("删除失败");
 		  }

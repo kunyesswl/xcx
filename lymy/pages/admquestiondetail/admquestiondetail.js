@@ -4,7 +4,7 @@ Page({
   data: {
 	  id:"",
 	  openid:app.globalData.openId,
-	  apprAble:false,
+    apprAble:true,
 	  title:"",
 	  content:"",
 	  contactor:"",

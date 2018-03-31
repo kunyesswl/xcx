@@ -3,7 +3,13 @@
 					<view class="input-item">
 						<text class="input-item-label">类型</text>
 						<view class="input-item-content">
-							<text>{{obj.leaveOff}}</text>
+							<text>{{obj.leaveName}}</text>
+						</view>
+					</view>
+          <view class="input-item">
+						<text class="input-item-label">请假事由</text>
+						<view class="input-item-content">
+							<text>{{obj.content}}</text>
 						</view>
 					</view>
 					<view class="input-item">
@@ -15,13 +21,13 @@
 					<view class="input-item">
 						<text class="input-item-label">开始时间</text>
 						<view class="input-item-content">
-							<text>{{obj.startDate}}</text>
+							<text>{{obj.startTime}}</text>
 						</view>
 					</view>
 					<view class="input-item">
 						<text class="input-item-label">到期时间</text>
 						<view class="input-item-content">
-							<text>{{obj.endDate}}</text>
+							<text>{{obj.endTime}}</text>
 						</view>
 					</view>
 					

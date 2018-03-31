@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+var util = require('../../utils/util.js');
 var app = getApp();
 var a = app.globalData.persiomsson;
 Page({
@@ -20,34 +21,66 @@ Page({
     // })
   },
   fetchData:function(){
-    this.setData({
-      indexmenu: [
-        {
-          'icon': './../../images/icon_35.png',
-          'text': '通知公告',
-          'url': 'noticelist'
-        },
-        {
-          'icon': './../../images/icon_36.png',
-          'text': '报事报修',
-          'url': 'property'
-        },
-        {
-          'icon': './../../images/icon_32.png',
-          'text': '投诉建议',
-          'url': 'question'
-        },
-        {
-          'icon': './../../images/icon_42.png',
-          'text': '费用查询',
-        }
-      ],
-      imgUrls: [
-        '../../images/gg1.jpg',
-        '../../images/gg2.jpg',
-        '../../images/gg3.jpg'
-      ]
-    })
+    var _this = this;
+    util.httppost("https://www.kunyesswl.com/wxspl/index/advertQuery/", {}, function (res) {
+      console.log(res);
+      if (res.data.code == "000") {
+        var _data = res.data.list;
+        _this.setData({
+          indexmenu: [
+            {
+              'icon': './../../images/icon_35.png',
+              'text': '通知公告',
+              'url': 'noticelist'
+            },
+            {
+              'icon': './../../images/icon_36.png',
+              'text': '报事报修',
+              'url': 'property'
+            },
+            {
+              'icon': './../../images/icon_32.png',
+              'text': '投诉建议',
+              'url': 'question'
+            },
+            {
+              'icon': './../../images/icon_42.png',
+              'text': '费用查询',
+            }
+          ],
+          imgUrls: _data
+        })
+      } else {
+        _this.setData({
+          indexmenu: [
+            {
+              'icon': './../../images/icon_35.png',
+              'text': '通知公告',
+              'url': 'noticelist'
+            },
+            {
+              'icon': './../../images/icon_36.png',
+              'text': '报事报修',
+              'url': 'property'
+            },
+            {
+              'icon': './../../images/icon_32.png',
+              'text': '投诉建议',
+              'url': 'question'
+            },
+            {
+              'icon': './../../images/icon_42.png',
+              'text': '费用查询',
+            }
+          ],
+          imgUrls: [
+            '../../images/gg1.jpg',
+            '../../images/gg2.jpg',
+            '../../images/gg3.jpg'
+          ]
+        })
+      }
+    });
   },
   changeRoute:function(url){
     wx.navigateTo({

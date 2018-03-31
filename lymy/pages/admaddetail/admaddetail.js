@@ -21,7 +21,7 @@ Page({
   fetchData: function(){
 	  var _this = this;
 	 if(this.data.id){
-		util.httppost("https://www.kunyesswl.com/wxspl/func/noticeDetail/",{id:_this.data.id},function(res){
+     util.httppost("https://www.kunyesswl.com/wxspl/index/advertDetail/",{id:_this.data.id},function(res){
 		  console.log(res);
 		  if(res.data.code=="000"){
 			  var _data = res.data.detail;
@@ -29,10 +29,10 @@ Page({
 				editAble:false,
 				id:_data.id,
 				title:_data.title,
-				content:_data.content,
+        content: _data.rDescription,
 				createTime:_data.createTime,
 				isApplIndex: isNaN(_data.isEnable)?0:parseInt(_data.isEnable),
-				uploadimgs:_data.imgUrls
+        uploadimgs: [_data.imgUrl]
 			}) 
 		  }
 	  });	
@@ -112,7 +112,7 @@ Page({
 		  if(imageid.length>0){
 			  imageid = imageid.substr(0,imageid.length-1);
 		  }
-		  data.phones =imageid;
+		  data.phone =imageid;
 		  util.httppost("https://www.kunyesswl.com/wxspl/index/submitAdvert",data,function(res){
 			console.log(res);
 		  if(res.data.code=="000"){
